@@ -2,9 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Trophy, Medal, Award, TrendingUp, Package, DollarSign, 
   Users, Shield, Clock, Swords, Crown, Eye, ChevronDown, 
-  ChevronUp, ExternalLink, Zap, Calendar, AlertCircle
+  ChevronUp, ExternalLink, Zap, Calendar, AlertCircle, MapPin
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import MercyMap from './MercyMap';
 
 const AdvertiserDashboard = () => {
   const [advertisers, setAdvertisers] = useState([]);
@@ -163,6 +164,7 @@ const AdvertiserDashboard = () => {
           <div className="flex gap-1">
             {[
               { id: 'leaderboard', label: 'Weekly Leaderboard', icon: Trophy },
+              { id: 'mercymap', label: 'Mercy Map', icon: MapPin },
               { id: 'warroom', label: 'War Room', icon: Swords },
               { id: 'insights', label: 'Citizen Insights', icon: Users },
               { id: 'donations', label: 'Live Donations', icon: Package }
@@ -323,6 +325,13 @@ const AdvertiserDashboard = () => {
                 </table>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Mercy Map Tab */}
+        {activeTab === 'mercymap' && (
+          <div className="space-y-6">
+            <MercyMap selectedAdvertiser={selectedAdvertiser} />
           </div>
         )}
 

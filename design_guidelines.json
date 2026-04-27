@@ -1,0 +1,95 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Jewel & Luxury)",
+  "emotional_tone": "Weighty, spiritual, cinematic, premium, mysterious yet trustworthy",
+  "colors": {
+    "background": "#050505",
+    "surface": "#121212",
+    "surface_glass": "bg-black/60 backdrop-blur-2xl border-white/10",
+    "primary": "#D4AF37",
+    "primary_hover": "#FDE047",
+    "secondary": "#2A2A2A",
+    "accent_glow": "rgba(212, 175, 55, 0.4)",
+    "text_primary": "#FAFAF9",
+    "text_secondary": "#A8A29E",
+    "error": "#EF4444",
+    "success": "#10B981"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond",
+    "body_font": "Outfit",
+    "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-light",
+    "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-light",
+    "h3": "text-xl sm:text-2xl font-medium",
+    "body": "text-base leading-relaxed",
+    "overline": "text-xs tracking-[0.2em] uppercase font-bold text-primary",
+    "import_instruction": "Import Cormorant Garamond and Outfit from Google Fonts"
+  },
+  "spacing_and_layout": {
+    "container": "max-w-md mx-auto min-h-screen relative overflow-hidden",
+    "padding_standard": "p-6 sm:p-8",
+    "gap_standard": "gap-6",
+    "grid_strategy": "Mobile-first vertical stack with glassmorphic cards. Use grid-cols-2 for stats (Hours, Earnings).",
+    "border_radius": "rounded-2xl sm:rounded-3xl",
+    "alignment": "Center-aligned for main player controls (Walk button), left-aligned for stats and ledger."
+  },
+  "components": {
+    "background_media": {
+      "type": "div",
+      "classes": "absolute inset-0 z-0",
+      "instruction": "Use a full-screen image/video background with a gradient overlay (bg-gradient-to-b from-black/40 via-black/20 to-black/80) to ensure text legibility."
+    },
+    "walk_button": {
+      "type": "button",
+      "classes": "w-32 h-32 rounded-full flex items-center justify-center bg-gradient-to-b from-[#D4AF37] to-[#B48E2D] text-black font-bold text-2xl shadow-[0_0_40px_rgba(212,175,55,0.4)] hover:scale-105 transition-transform duration-300",
+      "instruction": "This is the central CTA. When active, it should pulse."
+    },
+    "slide_verification": {
+      "type": "custom",
+      "classes": "h-16 rounded-full bg-black/40 backdrop-blur-md border border-white/10 flex items-center px-2 relative",
+      "instruction": "Build a custom slide-to-unlock component. It must have a 31-second countdown timer. If the user doesn't slide in time, show a penalty warning."
+    },
+    "glass_card": {
+      "type": "div",
+      "classes": "bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 shadow-2xl",
+      "instruction": "Use for the Ledger/Dashboard stats (G5 Gold balance, hours, streak)."
+    },
+    "progress_bar": {
+      "classes": "h-2 bg-white/10 rounded-full overflow-hidden",
+      "fill_classes": "h-full bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.8)]"
+    }
+  },
+  "icons_and_assets": {
+    "library": "lucide-react",
+    "instruction": "Use lucide-react for standard icons (Play, Pause, ChevronRight, Lock, Unlock, Clock, Flame for streak).",
+    "image_urls": [
+      {
+        "category": "background_video_fallback",
+        "url": "https://images.pexels.com/photos/7360548/pexels-photo-7360548.jpeg",
+        "description": "Person holding staff in arid landscape, acting as a cinematic Jesus walking fallback."
+      },
+      {
+        "category": "g5_gold_icon",
+        "url": "https://images.unsplash.com/flagged/photo-1554386690-8627e1041100",
+        "description": "Gold coin to represent G5 GOLD currency in the ledger."
+      }
+    ]
+  },
+  "animations": {
+    "hover_states": "All buttons should have a slight scale-up (hover:scale-105) and increased brightness.",
+    "active_states": "Scale-down (active:scale-95) for tactile feedback.",
+    "pulse": "The 'Walk' button should have a continuous slow pulse animation when audio is actively playing.",
+    "slide_timer": "The 31-second timer should visibly count down with a shrinking progress bar."
+  },
+  "accessibility": {
+    "contrast": "Ensure all text over the glassmorphic background has sufficient contrast (use text-shadow if necessary).",
+    "data_testid": "All interactive elements MUST have data-testid attributes (e.g., 'walk-button', 'slide-verify-handle', 'ledger-card')."
+  },
+  "instructions_to_main_agent": [
+    "Build a mobile-first UI with a fixed full-screen background image.",
+    "Create a bottom drawer or swipe-up section for the 'Ledger' (profile, stats).",
+    "Implement the 'Walk' button as the centerpiece of the main screen.",
+    "Mock the 31-second verification slide that appears when 'Walk' is clicked.",
+    "Use standard HTML/Tailwind for the layout and Shadcn for complex internal elements if needed, but primarily rely on custom glassmorphism for this cinematic look."
+  ]
+}

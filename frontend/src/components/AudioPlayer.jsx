@@ -70,20 +70,25 @@ const AudioPlayer = () => {
         .from('loyalty_ledger')
         .select('*')
         .limit(1)
-        .single();
+        .maybeSingle(); // Use maybeSingle instead of single to avoid 406 errors
 
-      if (error && error.code !== 'PGRST116') {
-        console.error('Error fetching ledger:', error);
+      if (error) {
+        // Only log actual errors, not "no rows" errors
+        if (error.code !== 'PGRST116') {
+          console.log('Ledger fetch info:', error.message);
+        }
         return;
       }
 
       if (data) {
-        setLedgerData(data);
+        setLedgerData(prev => ({ ...prev, ...data }));
         setTotalHours(parseFloat(data.time_verified_hours) || 0);
         setCurrentProgress((parseFloat(data.time_verified_hours) || 0) % 33);
       }
+      // If no data, keep defaults - user hasn't been set up yet
     } catch (err) {
-      console.error('Ledger fetch error:', err);
+      // Silently handle - app will work with defaults
+      console.log('Using default ledger values');
     }
   }, []);
 
@@ -107,7 +112,9 @@ const AudioPlayer = () => {
 
   const handleSliderEnd = () => {
     isDragging.current = false;
-    if (sliderPosition >= 85) {
+    // Lower threshold during verification window for easier detection
+    const threshold = verificationPhase === 'window_open' ? 70 : 85;
+    if (sliderPosition >= threshold) {
       handleSlideComplete();
     } else {
       setSliderPosition(0);
@@ -131,10 +138,13 @@ const AudioPlayer = () => {
         // Start audio session
         startWeekdaySession();
       } else if (verificationPhase === 'window_open') {
-        // Verification successful during the 10-second window
+        // Verification successful during the 10-second window - THIS IS THE KEY CHECK
         handleVerificationSuccess();
+      } else if (verificationPhase === 'waiting') {
+        // User wants to stop during countdown - allow it
+        stopWeekdaySession();
       } else {
-        // Stop session
+        // Stop session (success or other phase)
         stopWeekdaySession();
       }
     } else if (dayMode === 'saturday') {

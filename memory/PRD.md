@@ -17,33 +17,38 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - $3/hr raise every 90 perfect days across all 3 pillars
 - Ledger tracking: hours, balance, streaks
 - Profile: name, age, ethnicity, gender only
+- Merchant Transparency Ledger for advertisers
 
 ## Tech Stack
 - **Frontend**: React + Tailwind CSS
 - **Backend**: Supabase (PostgreSQL)
 - **Connection**: Transaction Pooler (IPv4)
+- **Blockchain**: Solana (countryofchrist.sol)
 
-## What's Been Implemented (Jan 27, 2026)
+## What's Been Implemented
 
-### Database (Supabase)
-- ✅ `citizen_profiles` - name, age, ethnicity, gender, disciple_id, display_name
-- ✅ `loyalty_ledger` - hours, balance, hourly_rate, pillar streaks, audio position
+### Jan 27, 2026 - Initial TIV-TEK System
+- ✅ `citizen_profiles` - name, age, ethnicity, gender, disciple_id
+- ✅ `loyalty_ledger` - hours, balance, hourly_rate, pillar streaks
 - ✅ `tivtek_tracking` - verification stats, weekly completion, sabbath tracking
 - ✅ `good_samaritan_tasks` - Saturday task tracking with witness upload
 - ✅ `sabbath_sessions` - Sunday 528 Hz participation
 - ✅ `verification_log` - Atomic time ledger for all verifications
+- ✅ Audio Player with TIV-TEK verification cycle
+- ✅ Three Pillars dashboard
 
-### Frontend
-- ✅ Audio Player screen with mobile-first design
-- ✅ Day mode detection (weekday/saturday/sunday)
-- ✅ TIV-TEK verification cycle (20s countdown → 10s window → penalty at 31s)
-- ✅ Slide-to-walk button with visual feedback
-- ✅ Three Pillars dashboard (Verification, Samaritan, Sabbath streaks)
-- ✅ G5 GOLD balance display
-- ✅ Session timer tracking
-- ✅ Penalty modal for failed verification
-- ✅ Saturday Good Samaritan task flow
-- ✅ Sunday Sabbath 18-minute session
+### Jan 27, 2026 - Merchant Transparency Ledger
+- ✅ `advertisers` - business info, $25K buy-in status, donation tracking, Solana wallet
+- ✅ `merchant_donations` - item donations with value and quality scoring
+- ✅ `weekly_competitions` - 1st/2nd/3rd place tracking (4/2/1 days exclusive ads)
+- ✅ `war_room_events` - $100K monthly competition for 7 days exclusive
+- ✅ `war_room_participants` - tracking entry fees and participants
+- ✅ `ad_schedule` - exclusive ad slot scheduling
+- ✅ Public advertiser dashboard at /merchants
+- ✅ Live leaderboard with real-time updates
+- ✅ War Room tab with $100K entry, no runner-ups rule
+- ✅ Citizen Insights (demographics for advertisers)
+- ✅ Live Donations feed
 
 ## Prioritized Backlog
 
@@ -53,16 +58,17 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - [ ] Resume playback from last position
 
 ### P1 - High Priority
-- [ ] Advertiser dashboard (public leaderboard)
 - [ ] Closet/shop for spending G5 GOLD
 - [ ] Witness upload with photo/video
 - [ ] Push notifications for verification
+- [ ] Advertiser registration portal
 
 ### P2 - Medium Priority
 - [ ] 528 Hz tone audio for Sabbath
 - [ ] Weekly 33-hour completion tracking
 - [ ] 90-day raise calculation automation
 - [ ] Ad display during weekends
+- [ ] Solana wallet integration
 
 ### P3 - Nice to Have
 - [ ] Offline mode support (PWA)
@@ -73,8 +79,12 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - URL: https://cwsgebsxbhvfnyzyjasy.supabase.co
 - Anon Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
+## Routes
+- `/` - Audio Player (citizen app)
+- `/merchants` - Merchant Transparency Ledger (advertiser dashboard)
+
 ## Next Tasks
 1. Integrate actual Bible audio source
 2. Build user registration flow
-3. Add advertiser dashboard
-4. Implement closet shopping experience
+3. Build Closet shopping experience
+4. Implement Solana wallet integration for G5 GOLD tracking

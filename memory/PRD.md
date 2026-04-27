@@ -50,6 +50,17 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - ✅ Citizen Insights (demographics for advertisers)
 - ✅ Live Donations feed
 
+### Jan 27, 2026 - Mercy Map Module
+- ✅ `mercy_map_distribution` - regional G5 GOLD distribution tracking
+- ✅ `mercy_map_events` - real-time donation pulses for map animation
+- ✅ Geographic visualization with 5 US regions (Northeast, Southeast, Midwest, Southwest, West)
+- ✅ Interactive region selection with detail panels
+- ✅ Advertiser influence breakdown per region
+- ✅ Regional Influence Leaderboard showing top advertiser per region
+- ✅ Real-time pulse animations for donation events
+- ✅ Advertiser filter to isolate competitor influence
+- ✅ Color-coded legend for all advertisers
+
 ## Prioritized Backlog
 
 ### P0 - Critical

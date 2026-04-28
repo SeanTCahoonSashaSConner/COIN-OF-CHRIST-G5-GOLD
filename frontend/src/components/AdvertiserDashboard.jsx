@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import MercyMap from './MercyMap';
+import BattleMode from './BattleMode';
 
 const AdvertiserDashboard = () => {
   const [advertisers, setAdvertisers] = useState([]);
@@ -165,7 +166,8 @@ const AdvertiserDashboard = () => {
             {[
               { id: 'leaderboard', label: 'Weekly Leaderboard', icon: Trophy },
               { id: 'mercymap', label: 'Mercy Map', icon: MapPin },
-              { id: 'warroom', label: 'War Room', icon: Swords },
+              { id: 'battlemode', label: 'Battle Mode', icon: Swords },
+              { id: 'warroom', label: 'War Room', icon: Crown },
               { id: 'insights', label: 'Citizen Insights', icon: Users },
               { id: 'donations', label: 'Live Donations', icon: Package }
             ].map(tab => (
@@ -333,6 +335,11 @@ const AdvertiserDashboard = () => {
           <div className="space-y-6">
             <MercyMap selectedAdvertiser={selectedAdvertiser} />
           </div>
+        )}
+
+        {/* Battle Mode Tab */}
+        {activeTab === 'battlemode' && (
+          <BattleMode />
         )}
 
         {/* War Room Tab */}

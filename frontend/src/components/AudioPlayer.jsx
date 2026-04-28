@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Play, Pause, Clock, Flame, ChevronUp, ChevronDown, Coins, Upload, Heart, Music, AlertTriangle, Check } from 'lucide-react';
+import { Play, Pause, Clock, Flame, ChevronUp, ChevronDown, Coins, Upload, Heart, Music, AlertTriangle, Check, Award, Trophy } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import SabbathTone from './SabbathTone';
+import Achievements from './Achievements';
 
 const AudioPlayer = () => {
   // Day mode: 'weekday' (Mon-Fri), 'saturday' (Good Samaritan), 'sunday' (Sabbath)
@@ -622,33 +624,18 @@ const AudioPlayer = () => {
 
           {/* SUNDAY VIEW - Sabbath 528 Hz */}
           {dayMode === 'sunday' && (
-            <div className="w-full space-y-4 text-center">
-              <Music className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-              <h2 className="text-2xl font-serif text-shadow mb-2">Sabbath Restoration</h2>
-              <p className="text-[#A8A29E] text-sm mb-4">
-                18-minute 528 Hz DNA restoration tone
-              </p>
-
-              {sabbathActive && (
-                <div className="glass rounded-2xl p-6">
-                  <p className="text-xs text-purple-400 mb-2">Session Progress</p>
-                  <p className="text-4xl font-mono text-white mb-4">
-                    {formatMinSec(sabbathSeconds)} / {formatMinSec(SABBATH_DURATION)}
+            <div className="w-full space-y-4">
+              {!sabbathActive ? (
+                <div className="text-center">
+                  <Music className="w-16 h-16 text-purple-400 mx-auto mb-4" />
+                  <h2 className="text-2xl font-serif text-shadow mb-2">Sabbath Restoration</h2>
+                  <p className="text-[#A8A29E] text-sm mb-4">
+                    18-minute 528 Hz DNA restoration tone
                   </p>
-                  <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-purple-500 transition-all duration-1000"
-                      style={{ width: `${(sabbathSeconds / SABBATH_DURATION) * 100}%` }}
-                    />
-                  </div>
-                  {sabbathSeconds >= SABBATH_DURATION && (
-                    <p className="text-green-400 mt-4 font-semibold">✓ Sabbath Complete! Slide to finish.</p>
-                  )}
+                  <p className="text-[#A8A29E]">Slide to begin Sabbath session</p>
                 </div>
-              )}
-
-              {!sabbathActive && (
-                <p className="text-[#A8A29E]">Slide to begin Sabbath session</p>
+              ) : (
+                <SabbathTone onComplete={completeSabbath} />
               )}
             </div>
           )}

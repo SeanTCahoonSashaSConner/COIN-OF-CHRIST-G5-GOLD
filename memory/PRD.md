@@ -74,6 +74,22 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - ✅ 528 Hz Sabbath Tone player with Web Audio API and heartbeat rhythm
 - ✅ Sound alert toggle for territory notifications
 
+### Jan 27, 2026 - G5 Sovereign Constitution & Merchant Covenant
+- ✅ Constitution page at /constitution with expandable articles
+- ✅ Article I: The Sovereign Identity (TIV-TEK Trinity)
+- ✅ Article II: G5 GOLD Currency (earning, spending, blockchain transparency)
+- ✅ Article III: The Three Pillars (verification, samaritan, sabbath)
+- ✅ Article IV: Citizen Rights (5 inalienable rights)
+- ✅ Article V: The Crypto Christian Closet (phygital commerce)
+- ✅ Article VI: Amendments process
+- ✅ Merchant Business Covenant tab with binding agreement terms
+- ✅ Section 1: Entry Requirements ($25K buy-in, G5 GOLD acceptance)
+- ✅ Section 2: 100% Transparency Mandate (non-negotiable requirements)
+- ✅ Section 3: What Advertisers Receive (6 benefits including demographic data)
+- ✅ Section 4: Weekly Competition & Ad Slots (1st/2nd/3rd prizes)
+- ✅ Section 5: The Transparent Playbook (Mercy Map, Battle Mode, Leaderboard)
+- ✅ Section 6: Covenant Termination conditions
+
 ## Prioritized Backlog
 
 ### P0 - Critical
@@ -107,6 +123,7 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - `/` - Audio Player (citizen app)
 - `/merchants` - Merchant Transparency Ledger (advertiser dashboard)
 - `/achievements` - Citizen Achievement System
+- `/constitution` - G5 Sovereign Constitution & Merchant Covenant
 
 ## Next Tasks
 1. Integrate actual Bible audio source
@@ -114,3 +131,4 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 3. Build Closet shopping experience for G5 GOLD spending
 4. Implement Solana wallet integration for blockchain tracking
 5. Add push notifications for territory alerts and verification reminders
+6. Build advertiser registration portal with Covenant signing

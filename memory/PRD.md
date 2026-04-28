@@ -61,6 +61,19 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - ✅ Advertiser filter to isolate competitor influence
 - ✅ Color-coded legend for all advertisers
 
+### Jan 27, 2026 - Battle Mode & Enhanced Features
+- ✅ `territory_alerts` - competitive territory threat notifications
+- ✅ `donation_momentum` - hot streak and velocity tracking
+- ✅ `regional_conquests` - ruler tracking per region with attack status
+- ✅ `citizen_achievements` - user badge progress tracking
+- ✅ `achievement_definitions` - 10 badges with 5 tiers (bronze/silver/gold/platinum/divine)
+- ✅ Battle Mode dashboard with real-time territory alerts
+- ✅ Regional Conquest map showing rulers and "under attack" status
+- ✅ Donation Momentum leaderboard with hot/cooling streak indicators
+- ✅ Achievement system with 6 categories (Listening, Streaks, Samaritan, Sabbath, Special)
+- ✅ 528 Hz Sabbath Tone player with Web Audio API and heartbeat rhythm
+- ✅ Sound alert toggle for territory notifications
+
 ## Prioritized Backlog
 
 ### P0 - Critical
@@ -93,9 +106,11 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 ## Routes
 - `/` - Audio Player (citizen app)
 - `/merchants` - Merchant Transparency Ledger (advertiser dashboard)
+- `/achievements` - Citizen Achievement System
 
 ## Next Tasks
 1. Integrate actual Bible audio source
-2. Build user registration flow
-3. Build Closet shopping experience
-4. Implement Solana wallet integration for G5 GOLD tracking
+2. Build user registration/authentication flow
+3. Build Closet shopping experience for G5 GOLD spending
+4. Implement Solana wallet integration for blockchain tracking
+5. Add push notifications for territory alerts and verification reminders

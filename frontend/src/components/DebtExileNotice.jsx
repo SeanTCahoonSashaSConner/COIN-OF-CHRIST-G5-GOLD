@@ -4,6 +4,8 @@ import {
   ArrowRight, Star, Crown, Sparkles, Clock, Gift, Shield,
   XCircle, ChevronDown, Home, CreditCard, GraduationCap, Car
 } from 'lucide-react';
+import CountryOutline from './CountryOutline';
+import RailroadFence from './RailroadFence';
 
 const DebtExileNotice = () => {
   const [currentHourlyRate, setCurrentHourlyRate] = useState(13);
@@ -35,7 +37,7 @@ const DebtExileNotice = () => {
       day: 0, 
       rate: 13, 
       event: 'Citizenship Begins', 
-      description: (<>Your birthright is activated. You begin earning <span className="g5-gold">G5 GOLD</span> at <span className="wb-num"><span className="wb-num"><span className="wb-num">$13</span></span></span>/hr.</>),
+      description: (<>Your birthright is activated. You begin earning <span className="g5-gold">G5 GOLD</span> at  $13 /hr.</>),
       yearlyEarning: calculateYearlyEarnings(13),
       debtYears: yearsToPayOffAt13.toFixed(1)
     },
@@ -43,7 +45,7 @@ const DebtExileNotice = () => {
       day: 90, 
       rate: 16, 
       event: 'First Raise Earned', 
-      description: (<>Perfect <span className="wb-num"><span className="wb-num"><span className="wb-num">90</span></span></span>-day streak achieved! +<span className="wb-num"><span className="wb-num"><span className="wb-num">$3</span></span></span>/hr raise. Now earning <span className="wb-num"><span className="wb-num"><span className="wb-num">$16</span></span></span>/hr forever.</>),
+      description: (<>Perfect <span className="wb-num"> 90</span>-day streak achieved! +  $3/hr raise. Now earning  $16 /hr forever.</>),
       yearlyEarning: calculateYearlyEarnings(16),
       debtYears: yearsToPayOffAt16.toFixed(1)
     },
@@ -51,7 +53,7 @@ const DebtExileNotice = () => {
       day: 180, 
       rate: 19, 
       event: 'DEBT FREEDOM THRESHOLD', 
-      description: (<>At <span className="wb-num"><span className="wb-num"><span className="wb-num">$19</span></span></span>/hr, you are now earning enough to NEVER borrow again.</>),
+      description: (<>At  $19 /hr, you are now earning enough to NEVER borrow again.</>),
       yearlyEarning: calculateYearlyEarnings(19),
       debtYears: yearsToPayOffAt19.toFixed(1),
       highlight: true
@@ -88,7 +90,12 @@ const DebtExileNotice = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#FAFAF9]" data-testid="debt-exile-page">
+    <div className="min-h-screen folded-map text-[#FAFAF9] relative" data-testid="debt-exile-page">
+      <CountryOutline country="brazil" />
+      <div className="relative z-10">
+      <div className="pt-4 px-4">
+        <RailroadFence label="Debt Exile" ties={28} />
+      </div>
       {/* Header - The Matrix */}
       <header className="bg-gradient-to-b from-red-900/50 to-[#050505] py-12 border-b border-red-500/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -126,22 +133,22 @@ const DebtExileNotice = () => {
           <div className="grid md:grid-cols-4 gap-4 mt-6">
             <div className="bg-black/40 rounded-xl p-4 text-center">
               <CreditCard className="w-6 h-6 text-red-400 mx-auto mb-2" />
-              <p className="text-xl font-bold text-red-400"><span className="wb-num"><span className="wb-num">$6</span></span>,<span className="wb-num"><span className="wb-num">500</span></span></p>
+              <p className="text-xl font-bold text-red-400"> $6,500</p>
               <p className="text-xs text-[#A8A29E]">Credit Card Avg</p>
             </div>
             <div className="bg-black/40 rounded-xl p-4 text-center">
               <GraduationCap className="w-6 h-6 text-red-400 mx-auto mb-2" />
-              <p className="text-xl font-bold text-red-400"><span className="wb-num"><span className="wb-num">$37</span></span>,<span className="wb-num"><span className="wb-num">000</span></span></p>
+              <p className="text-xl font-bold text-red-400"> $37,000</p>
               <p className="text-xs text-[#A8A29E]">Student Loan Avg</p>
             </div>
             <div className="bg-black/40 rounded-xl p-4 text-center">
               <Car className="w-6 h-6 text-red-400 mx-auto mb-2" />
-              <p className="text-xl font-bold text-red-400"><span className="wb-num"><span className="wb-num">$23</span></span>,<span className="wb-num"><span className="wb-num">000</span></span></p>
+              <p className="text-xl font-bold text-red-400"> $23,000</p>
               <p className="text-xs text-[#A8A29E]">Auto Loan Avg</p>
             </div>
             <div className="bg-black/40 rounded-xl p-4 text-center">
               <Home className="w-6 h-6 text-red-400 mx-auto mb-2" />
-              <p className="text-xl font-bold text-red-400"><span className="wb-num"><span className="wb-num">$47</span></span>,<span className="wb-num"><span className="wb-num">500</span></span></p>
+              <p className="text-xl font-bold text-red-400"> $47,500</p>
               <p className="text-xs text-[#A8A29E]">Other Debt Avg</p>
             </div>
           </div>
@@ -150,7 +157,7 @@ const DebtExileNotice = () => {
             <p className="text-center text-red-300">
               <strong>The Matrix keeps you in debt slavery.</strong> Interest rates, fees, and penalties 
               designed to keep you paying forever. The average American will pay 
-              <strong className="text-red-400"> <span className="wb-num"><span className="wb-num">$200</span></span>,<span className="wb-num"><span className="wb-num">000</span></span>+ in interest</strong> over their lifetime.
+              <strong className="text-red-400"> $200,000+ in interest</strong> over their lifetime.
             </p>
           </div>
         </section>
@@ -177,8 +184,7 @@ const DebtExileNotice = () => {
 
           <div className="text-center py-6">
             <p className="text-[#A8A29E] mb-2">Your New Starting Point</p>
-            <div className="text-6xl md:text-7xl font-bold text-[#D4AF37] mb-2">
-              <span className="wb-num">$0</span>
+            <div className="text-6xl md:text-7xl font-bold text-[#D4AF37] mb-2"> $0
             </div>
             <p className="text-lg text-green-400">Zero debt. Clean slate. Fresh start.</p>
           </div>
@@ -206,29 +212,29 @@ const DebtExileNotice = () => {
         <section className="glass rounded-2xl p-8">
           <div className="flex items-center gap-3 mb-6">
             <TrendingUp className="w-8 h-8 text-green-500" />
-            <h2 className="text-2xl font-serif text-white">The <span className="wb-num"><span className="wb-num">90</span></span>-Day Raise Logic</h2>
+            <h2 className="text-2xl font-serif text-white">The <span className="wb-num">90</span>-Day Raise Logic</h2>
           </div>
 
           <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 mb-6">
             <div className="grid md:grid-cols-3 gap-4 text-center">
               <div>
                 <Shield className="w-8 h-8 text-[#D4AF37] mx-auto mb-2" />
-                <p className="font-semibold text-[#D4AF37]">Pillar <span className="wb-num"><span className="wb-num">1</span></span></p>
+                <p className="font-semibold text-[#D4AF37]">Pillar <span className="wb-num">1</span></p>
                 <p className="text-sm text-[#A8A29E]">Never miss verification</p>
               </div>
               <div>
                 <Gift className="w-8 h-8 text-green-400 mx-auto mb-2" />
-                <p className="font-semibold text-green-400">Pillar <span className="wb-num"><span className="wb-num">2</span></span></p>
+                <p className="font-semibold text-green-400">Pillar <span className="wb-num">2</span></p>
                 <p className="text-sm text-[#A8A29E]">Weekly Good Samaritan</p>
               </div>
               <div>
                 <Sparkles className="w-8 h-8 text-purple-400 mx-auto mb-2" />
-                <p className="font-semibold text-purple-400">Pillar <span className="wb-num"><span className="wb-num">3</span></span></p>
+                <p className="font-semibold text-purple-400">Pillar <span className="wb-num">3</span></p>
                 <p className="text-sm text-[#A8A29E]">Sunday Sabbath</p>
               </div>
             </div>
             <div className="text-center mt-4 pt-4 border-t border-green-500/30">
-              <p className="text-2xl font-bold text-green-400"><span className="wb-num"><span className="wb-num">90</span></span> PERFECT DAYS = <span className="wb-num"><span className="wb-num">$3</span></span>/HR RAISE FOREVER</p>
+              <p className="text-2xl font-bold text-green-400"> 90 PERFECT DAYS = $3 /HR RAISE FOREVER</p>
               <p className="text-sm text-[#A8A29E] mt-1">Raises compound. No ceiling. No limit.</p>
             </div>
           </div>
@@ -334,7 +340,7 @@ const DebtExileNotice = () => {
                         <p className="font-semibold text-[#D4AF37]">${milestone.yearlyEarning.toLocaleString()}</p>
                       </div>
                       <div className="bg-black/30 rounded-lg p-2">
-                        <p className="text-[#A8A29E] text-xs">Years to Clear <span className="wb-num"><span className="wb-num">$114K</span></span></p>
+                        <p className="text-[#A8A29E] text-xs">Years to Clear <span className="wb-num">$114K</span></p>
                         <p className={`font-semibold ${
                           parseFloat(milestone.debtYears) <= 3.5 ? 'text-green-400' : 'text-white'
                         }`}>{milestone.debtYears} years</p>
@@ -354,33 +360,33 @@ const DebtExileNotice = () => {
               <Target className="w-12 h-12 text-white" />
             </div>
             <h2 className="text-3xl font-serif text-green-400 mb-4">
-              THE <span className="wb-num">$19</span>/HR FREEDOM THRESHOLD
+              THE $19 /HR FREEDOM THRESHOLD
             </h2>
             <p className="text-xl text-white mb-6">
-              At <span className="wb-num">$19</span>/hr, you walk out of debt — <strong>never having to borrow again.</strong>
+              At $19 /hr, you walk out of debt — <strong>never having to borrow again.</strong>
             </p>
 
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div className="bg-black/40 rounded-xl p-4">
-                <p className="text-3xl font-bold text-green-400"><span className="wb-num"><span className="wb-num">180</span></span></p>
-                <p className="text-sm text-[#A8A29E]">Days to reach <span className="wb-num"><span className="wb-num">$19</span></span>/hr</p>
+                <p className="text-3xl font-bold text-green-400"> 180</p>
+                <p className="text-sm text-[#A8A29E]">Days to reach $19 /hr</p>
               </div>
               <div className="bg-black/40 rounded-xl p-4">
-                <p className="text-3xl font-bold text-green-400"><span className="wb-num"><span className="wb-num">$32</span></span>,<span className="wb-num"><span className="wb-num">604</span></span></p>
-                <p className="text-sm text-[#A8A29E]">Yearly at <span className="wb-num"><span className="wb-num">$19</span></span>/hr</p>
+                <p className="text-3xl font-bold text-green-400"> $32,604</p>
+                <p className="text-sm text-[#A8A29E]">Yearly at $19 /hr</p>
               </div>
               <div className="bg-black/40 rounded-xl p-4">
-                <p className="text-3xl font-bold text-green-400"><span className="wb-num"><span className="wb-num">3.5</span></span></p>
-                <p className="text-sm text-[#A8A29E]">Years to clear <span className="wb-num"><span className="wb-num">$114K</span></span></p>
+                <p className="text-3xl font-bold text-green-400"> 3.5</p>
+                <p className="text-sm text-[#A8A29E]">Years to clear <span className="wb-num">$114K</span></p>
               </div>
             </div>
 
             <div className="bg-green-500/20 rounded-xl p-6">
               <h3 className="font-semibold text-green-400 mb-2">The Math of Freedom</h3>
               <div className="text-left text-sm text-[#A8A29E] space-y-2">
-                <p>• At <span className="wb-num"><span className="wb-num">$19</span></span>/hr × <span className="wb-num"><span className="wb-num">33</span></span> hrs/week × <span className="wb-num"><span className="wb-num">52</span></span> weeks = <strong className="text-white"><span className="wb-num"><span className="wb-num">$32</span></span>,<span className="wb-num"><span className="wb-num">604</span></span>/year</strong></p>
-                <p>• Average US debt of <span className="wb-num"><span className="wb-num">$114</span></span>,<span className="wb-num"><span className="wb-num">000</span></span> ÷ <span className="wb-num"><span className="wb-num">$32</span></span>,<span className="wb-num"><span className="wb-num">604</span></span> = <strong className="text-white"><span className="wb-num"><span className="wb-num">3.5</span></span> years</strong></p>
-                <p>• BUT you keep getting raises: <span className="wb-num"><span className="wb-num">$22</span></span>, <span className="wb-num"><span className="wb-num">$25</span></span>, <span className="wb-num"><span className="wb-num">$28</span></span>... <strong className="text-green-400">debt freedom accelerates</strong></p>
+                <p>• At $19 /hr × <span className="wb-num">33</span> hrs/week × <span className="wb-num">52</span> weeks = <strong className="text-white"> $32,604/year</strong></p>
+                <p>• Average US debt of <span className="wb-num">$114,000</span> ÷ <span className="wb-num">$32,604</span> = <strong className="text-white"> 3.5 years</strong></p>
+                <p>• BUT you keep getting raises: $22, $25, <span className="wb-num">$28</span>... <strong className="text-green-400">debt freedom accelerates</strong></p>
                 <p>• Meanwhile: <strong className="text-green-400">No interest. No fees. No penalties.</strong></p>
               </div>
             </div>
@@ -450,6 +456,10 @@ const DebtExileNotice = () => {
           </p>
         </div>
       </footer>
+      <div className="px-4 pb-4">
+        <RailroadFence ties={28} />
+      </div>
+      </div>
     </div>
   );
 };

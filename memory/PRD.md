@@ -97,6 +97,18 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - [ ] Audio source integration (Bible.is API or hosted MP3s)
 - [ ] Resume playback from last position
 
+### Feb 1, 2026 — Silent Platform + Brand Color System
+- ✅ Removed `Achievements.jsx` + `/achievements` route — silent platform, no public posts/badges
+- ✅ Global CSS: `.g5-gold` solid metallic gold gradient, `.wb-num` witness-blue (#3B82F6)
+- ✅ `<CountryOutline />` component — neon-blue silhouettes of USA, Canada, Mexico, UK, Brazil, Italy, Country of Christ
+- ✅ `<RailroadFence />` component — golden railroad ties with optional gate label
+- ✅ `<AdvertiserDeclaration />` component — clean content rules, banned categories, citizen-roster minor warning, banishment penalty
+- ✅ Folded-map page background (`.folded-map`) with paper-fold creases + parchment grain
+- ✅ Wired into: Witness Jury (UK outline), Constitution (Canada/USA outline by tab), Advertiser Dashboard (CountryOfChrist outline + Declaration), Debt Exile (Brazil outline)
+- ✅ G5 GOLD text auto-styled gold across every component
+- ✅ Numerals / $ amounts / Article Roman numerals auto-styled witness-blue
+
+
 ### P1 - High Priority
 - [ ] Closet/shop for spending G5 GOLD
 - [ ] Witness upload with photo/video
@@ -112,8 +124,6 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 
 ### P3 - Nice to Have
 - [ ] Offline mode support (PWA)
-- [ ] Social sharing
-- [ ] Achievement badges
 
 ## Supabase Credentials
 - URL: https://cwsgebsxbhvfnyzyjasy.supabase.co
@@ -122,13 +132,23 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 ## Routes
 - `/` - Audio Player (citizen app)
 - `/merchants` - Merchant Transparency Ledger (advertiser dashboard)
-- `/achievements` - Citizen Achievement System
 - `/constitution` - G5 Sovereign Constitution & Merchant Covenant
+- `/witness-jury` - Witness Jury Protocol
+- `/debt-exile` - Debt Exile Notice / Fiscal Journey
 
-## Next Tasks
-1. Integrate actual Bible audio source
-2. Build user registration/authentication flow
-3. Build Closet shopping experience for G5 GOLD spending
-4. Implement Solana wallet integration for blockchain tracking
-5. Add push notifications for territory alerts and verification reminders
-6. Build advertiser registration portal with Covenant signing
+## Next Tasks (priority order)
+1. **C2C / Crypto Christian Network mailing system** — BLOCKED: user's SQL didn't actually run in Supabase. User needs to re-run, then we wire frontend (verified cove directory view, covenant hub flag/capacity, c2c_routing_code, covenators/covenettes rosters)
+2. **Crypto Christian Closet** physical/digital marketplace + closet account balance (incl. $429.00 G5 GOLD initial drop)
+3. Integrate actual KJV Bible audio source (currently a timer placeholder)
+4. Solana wallet integration for blockchain tracking (currently UI-only)
+5. Advertiser registration portal with Covenant signing ceremony (digital signature with .sol wallet)
+
+## Design System (Feb 2026)
+- **G5 GOLD** text → solid metallic gold gradient via `.g5-gold` CSS class
+- **All numerals, $ amounts, Article Roman numerals** → witness-blue (`#3B82F6`) via `.wb-num` CSS class
+- **Folded-map background** (`.folded-map`) on every page — paper-fold creases + parchment grain
+- **Neon country outlines** (`<CountryOutline country=".." />`) — usa, canada, mexico, uk, brazil, italy, countryofchrist
+- **Golden railroad-tie fence** (`<RailroadFence label=".." />`) framing top + bottom of each page
+- **Silent platform** — Achievements page + badges/levels removed. No public posts allowed.
+- **Advertiser Clean-Content Declaration** (`<AdvertiserDeclaration />`) — non-negotiable: no age-sensitive material, dating sites/apps, alcohol, cigarette, nudity. Citizen roster includes children 11+. Violators banned from auctions and donation participations indefinitely. Citizenship requirement: become G5 Citizen + accept G5 GOLD online and offline in all stores.
+

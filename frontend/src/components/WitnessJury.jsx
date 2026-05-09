@@ -124,7 +124,7 @@ const WitnessJury = () => {
           </button>
           {expandedSection === 'jurisdiction' && (
             <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
-              <h3 className="text-lg font-semibold text-white">Section <span className="wb-num"><span className="wb-num">1</span></span>: Sovereign Declaration</h3>
+              <h3 className="text-lg font-semibold text-white">Section <span className="wb-num">1</span>: Sovereign Declaration</h3>
               <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
                 <p className="font-semibold text-red-400 mb-2">
                   The Country of Christ hereby declares:
@@ -139,7 +139,7 @@ const WitnessJury = () => {
                 </ul>
               </div>
 
-              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">2</span></span>: Voluntary Submission</h3>
+              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num">2</span>: Voluntary Submission</h3>
               <p>
                 By participating in the Country of Christ ecosystem, all parties voluntarily submit to 
                 this Protocol as the sole method of dispute resolution. This submission is:
@@ -151,7 +151,7 @@ const WitnessJury = () => {
                 <li>Recorded permanently on the Solana blockchain</li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">3</span></span>: Non-Interference Covenant</h3>
+              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num">3</span>: Non-Interference Covenant</h3>
               <p>
                 Any citizen or merchant who seeks resolution outside this Protocol commits a 
                 <strong className="text-red-400"> Cardinal Violation</strong> resulting in:
@@ -185,27 +185,27 @@ const WitnessJury = () => {
           </button>
           {expandedSection === 'jury' && (
             <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
-              <h3 className="text-lg font-semibold text-white">Section <span className="wb-num"><span className="wb-num">1</span></span>: Jury Composition</h3>
+              <h3 className="text-lg font-semibold text-white">Section <span className="wb-num">1</span>: Jury Composition</h3>
               <p>Each Witness Jury shall consist of:</p>
               <div className="grid md:grid-cols-3 gap-4 my-4">
                 <div className="bg-white/5 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-purple-400 mb-2"><span className="wb-num"><span className="wb-num">7</span></span></div>
+                  <div className="text-3xl font-bold text-purple-400 mb-2"> 7</div>
                   <p className="text-sm">Witness Jurors</p>
                   <p className="text-xs text-[#A8A29E]">TIV-TEK verified citizens</p>
                 </div>
                 <div className="bg-white/5 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-blue-400 mb-2"><span className="wb-num"><span className="wb-num">1</span></span></div>
+                  <div className="text-3xl font-bold text-blue-400 mb-2"> 1</div>
                   <p className="text-sm">Elder Moderator</p>
-                  <p className="text-xs text-[#A8A29E]"><span className="wb-num"><span className="wb-num">90</span></span>+ day perfect streak</p>
+                  <p className="text-xs text-[#A8A29E]"> 90+ day perfect streak</p>
                 </div>
                 <div className="bg-white/5 rounded-xl p-4 text-center">
-                  <div className="text-3xl font-bold text-green-400 mb-2"><span className="wb-num"><span className="wb-num">1</span></span></div>
+                  <div className="text-3xl font-bold text-green-400 mb-2"> 1</div>
                   <p className="text-sm">Scribe</p>
                   <p className="text-xs text-[#A8A29E]">Records to blockchain</p>
                 </div>
               </div>
 
-              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">2</span></span>: Juror Eligibility</h3>
+              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num">2</span>: Juror Eligibility</h3>
               <p>To serve as a Witness Juror, a citizen must:</p>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-center gap-2">
@@ -214,7 +214,7 @@ const WitnessJury = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span>Complete minimum <span className="wb-num"><span className="wb-num">33</span></span> hours of verified scripture listening</span>
+                  <span>Complete minimum <span className="wb-num">33</span> hours of verified scripture listening</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-500" />
@@ -226,28 +226,28 @@ const WitnessJury = () => {
                 </li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">3</span></span>: Elder Moderator Requirements</h3>
+              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num">3</span>: Elder Moderator Requirements</h3>
               <p>The Elder Moderator must additionally:</p>
               <ul className="space-y-2 mt-2">
                 <li className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-[#D4AF37]" />
-                  <span>Hold a <span className="wb-num"><span className="wb-num">90</span></span>+ day perfect streak across all Three Pillars</span>
+                  <span>Hold a 90 + day perfect streak across all Three Pillars</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-[#D4AF37]" />
-                  <span>Have earned at least one <span className="wb-num"><span className="wb-num">$3</span></span>/hr raise</span>
+                  <span>Have earned at least one $3 /hr raise</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-[#D4AF37]" />
-                  <span>Have completed <span className="wb-num"><span className="wb-num">100</span></span>+ hours of scripture listening</span>
+                  <span>Have completed 100 + hours of scripture listening</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-[#D4AF37]" />
-                  <span>Have served as Witness Juror in at least <span className="wb-num"><span className="wb-num">3</span></span> prior cases</span>
+                  <span>Have served as Witness Juror in at least <span className="wb-num">3</span> prior cases</span>
                 </li>
               </ul>
 
-              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">4</span></span>: Random Selection</h3>
+              <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num">4</span>: Random Selection</h3>
               <p>
                 Jurors are selected randomly from the pool of eligible citizens using a verifiable 
                 random function (VRF) on the Solana blockchain. This ensures:
@@ -359,14 +359,14 @@ const WitnessJury = () => {
               {/* Step 1 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-bold"><span className="wb-num"><span className="wb-num">1</span></span></span>
+                  <span className="text-purple-400 font-bold"> 1</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Filing of Grievance</h4>
                   <p className="text-sm mt-1">
                     The aggrieved party submits a formal grievance through the Protocol interface. 
                     The grievance is timestamped and recorded on the Solana blockchain. Filing fee: 
-                    <strong className="text-[#D4AF37]"> <span className="wb-num"><span className="wb-num">10</span></span> <span className="g5-gold">G5 GOLD</span></strong> (refundable if ruling favors plaintiff).
+                    <strong className="text-[#D4AF37]"> 10 <span className="g5-gold">G5 GOLD</span></strong> (refundable if ruling favors plaintiff).
                   </p>
                 </div>
               </div>
@@ -374,13 +374,13 @@ const WitnessJury = () => {
               {/* Step 2 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-bold"><span className="wb-num"><span className="wb-num">2</span></span></span>
+                  <span className="text-purple-400 font-bold"> 2</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Notification & Response</h4>
                   <p className="text-sm mt-1">
                     The respondent is notified immediately via the app. They have 
-                    <strong className="text-white"> <span className="wb-num"><span className="wb-num">72</span></span> hours</strong> to submit their response. 
+                    <strong className="text-white"> 72 hours</strong> to submit their response. 
                     Failure to respond results in default judgment.
                   </p>
                 </div>
@@ -389,13 +389,13 @@ const WitnessJury = () => {
               {/* Step 3 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-bold"><span className="wb-num"><span className="wb-num">3</span></span></span>
+                  <span className="text-purple-400 font-bold"> 3</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Jury Selection</h4>
                   <p className="text-sm mt-1">
                     The Solana VRF selects <span className="wb-num">7</span> eligible Witness Jurors and <span className="wb-num">1</span> Elder Moderator. 
-                    Each party may challenge up to <strong className="text-white"><span className="wb-num"><span className="wb-num">2</span></span> jurors</strong> without 
+                    Each party may challenge up to <strong className="text-white"> 2 jurors</strong> without 
                     cause. Challenged jurors are replaced via VRF.
                   </p>
                 </div>
@@ -404,7 +404,7 @@ const WitnessJury = () => {
               {/* Step 4 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-bold"><span className="wb-num"><span className="wb-num">4</span></span></span>
+                  <span className="text-purple-400 font-bold"> 4</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Evidence Presentation</h4>
@@ -422,12 +422,12 @@ const WitnessJury = () => {
               {/* Step 5 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-bold"><span className="wb-num"><span className="wb-num">5</span></span></span>
+                  <span className="text-purple-400 font-bold"> 5</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Deliberation</h4>
                   <p className="text-sm mt-1">
-                    Witness Jurors deliberate privately for up to <strong className="text-white"><span className="wb-num"><span className="wb-num">48</span></span> hours</strong>. 
+                    Witness Jurors deliberate privately for up to <strong className="text-white"> 48 hours</strong>. 
                     The Elder Moderator facilitates but does not vote. All deliberation is 
                     end-to-end encrypted but summary recorded on blockchain.
                   </p>
@@ -437,12 +437,12 @@ const WitnessJury = () => {
               {/* Step 6 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-purple-400 font-bold"><span className="wb-num"><span className="wb-num">6</span></span></span>
+                  <span className="text-purple-400 font-bold"> 6</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Verdict & Remedy</h4>
                   <p className="text-sm mt-1">
-                    A verdict requires <strong className="text-white"><span className="wb-num"><span className="wb-num">5</span></span> of <span className="wb-num"><span className="wb-num">7</span></span> jurors</strong> (supermajority). 
+                    A verdict requires <strong className="text-white"> 5 of <span className="wb-num">7</span> jurors</strong> (supermajority). 
                     The Elder Moderator then determines the appropriate remedy based on the verdict.
                   </p>
                 </div>
@@ -451,7 +451,7 @@ const WitnessJury = () => {
               {/* Step 7 */}
               <div className="flex gap-4">
                 <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-400 font-bold"><span className="wb-num"><span className="wb-num">7</span></span></span>
+                  <span className="text-green-400 font-bold"> 7</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Execution & Recording</h4>
@@ -541,7 +541,7 @@ const WitnessJury = () => {
                 <ul className="text-sm list-disc list-inside ml-4 mt-2">
                   <li>Filing fee is refunded</li>
                   <li>Case is marked "Reconciled" on blockchain</li>
-                  <li>Both parties receive +<span className="wb-num"><span className="wb-num">10</span></span> days to their streak bonuses</li>
+                  <li>Both parties receive + 10 days to their streak bonuses</li>
                 </ul>
               </div>
             </div>
@@ -568,7 +568,7 @@ const WitnessJury = () => {
           {expandedSection === 'appeals' && (
             <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
               <p>
-                Any party may appeal a verdict within <strong className="text-white"><span className="wb-num"><span className="wb-num">7</span></span> days</strong> of issuance.
+                Any party may appeal a verdict within <strong className="text-white"> 7 days</strong> of issuance.
               </p>
 
               <h3 className="text-lg font-semibold text-white">The Council of Elders</h3>
@@ -578,21 +578,21 @@ const WitnessJury = () => {
               <ul className="space-y-2 mt-2">
                 <li className="flex items-center gap-2">
                   <Crown className="w-5 h-5 text-[#D4AF37]" />
-                  <span><strong className="text-white"><span className="wb-num"><span className="wb-num">3</span></span> Senior Elders</strong> — <span className="wb-num"><span className="wb-num">180</span></span>+ day perfect streaks</span>
+                  <span><strong className="text-white"> 3 Senior Elders</strong> — 180 + day perfect streaks</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Crown className="w-5 h-5 text-[#D4AF37]" />
-                  <span><strong className="text-white">Minimum <span className="wb-num"><span className="wb-num">3</span></span> raises earned</strong> (<span className="wb-num"><span className="wb-num">$22</span></span>/hr or higher)</span>
+                  <span><strong className="text-white">Minimum <span className="wb-num">3</span> raises earned</strong> ($22 /hr or higher)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Crown className="w-5 h-5 text-[#D4AF37]" />
-                  <span><strong className="text-white"><span className="wb-num"><span className="wb-num">500</span></span>+ hours of scripture</strong> listening completed</span>
+                  <span><strong className="text-white"> 500+ hours of scripture</strong> listening completed</span>
                 </li>
               </ul>
 
               <h3 className="text-lg font-semibold text-white mt-6">Appeal Process</h3>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Appeal fee: <strong className="text-[#D4AF37]"><span className="wb-num"><span className="wb-num">50</span></span> <span className="g5-gold">G5 GOLD</span></strong> (refundable if appeal succeeds)</li>
+                <li>Appeal fee: <strong className="text-[#D4AF37]"> 50 <span className="g5-gold">G5 GOLD</span></strong> (refundable if appeal succeeds)</li>
                 <li>Council reviews all evidence and original deliberation summary</li>
                 <li>No new evidence may be introduced</li>
                 <li>Council may affirm, reverse, or modify the verdict</li>
@@ -632,7 +632,7 @@ const WitnessJury = () => {
       <footer className="bg-[#0a0a0a] border-t border-white/10 py-8">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-[#A8A29E] text-sm">
-            © <span className="wb-num"><span className="wb-num"><span className="wb-num">2026</span></span></span> Country of Christ • Witness Jury Protocol • Sovereign & Inviolable
+            © <span className="wb-num"> 2026</span> Country of Christ • Witness Jury Protocol • Sovereign & Inviolable
           </p>
         </div>
       </footer>

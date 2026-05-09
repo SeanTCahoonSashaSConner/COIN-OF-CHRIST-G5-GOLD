@@ -107,8 +107,8 @@ const AdvertiserDashboard = () => {
   const getRankIcon = (rank) => {
     switch(rank) {
       case 1: return <Trophy className="w-6 h-6 text-yellow-400" />;
-      case 2: return <Medal className="w-6 h-6 text-gray-300" />;
-      case 3: return <Award className="w-6 h-6 text-amber-600" />;
+      case <span className="wb-num">2</span>: return <Medal className="w-6 h-6 text-gray-300" />;
+      case <span className="wb-num">3</span>: return <Award className="w-6 h-6 text-amber-600" />;
       default: return <span className="w-6 h-6 flex items-center justify-center text-[#A8A29E]">{rank}</span>;
     }
   };
@@ -138,7 +138,7 @@ const AdvertiserDashboard = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-serif text-[#D4AF37]">Merchant Transparency Ledger</h1>
-              <p className="text-sm text-[#A8A29E]">$25,000/month commitment • Real-time donation tracking</p>
+              <p className="text-sm text-[#A8A29E]"><span className="wb-num"><span className="wb-num">$25</span></span>,<span className="wb-num"><span className="wb-num">000</span></span>/month commitment • Real-time donation tracking</p>
             </div>
             <div className="flex items-center gap-4">
               <div className="glass px-4 py-2 rounded-xl flex items-center gap-2">
@@ -225,7 +225,7 @@ const AdvertiserDashboard = () => {
                   <TrendingUp className="w-5 h-5 text-purple-400" />
                   <span className="text-sm text-[#A8A29E]">Buy-in Requirement</span>
                 </div>
-                <p className="text-3xl font-bold">$25K<span className="text-sm text-[#A8A29E]">/mo</span></p>
+                <p className="text-3xl font-bold"><span className="wb-num"><span className="wb-num">$25K</span></span><span className="text-sm text-[#A8A29E]">/mo</span></p>
               </div>
             </div>
 
@@ -239,19 +239,19 @@ const AdvertiserDashboard = () => {
                 <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 text-center">
                   <Trophy className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
                   <p className="text-lg font-bold text-yellow-400">1st Place</p>
-                  <p className="text-2xl font-bold">4 Days</p>
+                  <p className="text-2xl font-bold"><span className="wb-num"><span className="wb-num">4</span></span> Days</p>
                   <p className="text-sm text-[#A8A29E]">Exclusive Ads</p>
                 </div>
                 <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4 text-center">
                   <Medal className="w-8 h-8 text-gray-300 mx-auto mb-2" />
                   <p className="text-lg font-bold text-gray-300">2nd Place</p>
-                  <p className="text-2xl font-bold">2 Days</p>
+                  <p className="text-2xl font-bold"><span className="wb-num"><span className="wb-num">2</span></span> Days</p>
                   <p className="text-sm text-[#A8A29E]">Exclusive Ads</p>
                 </div>
                 <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-center">
                   <Award className="w-8 h-8 text-amber-600 mx-auto mb-2" />
                   <p className="text-lg font-bold text-amber-600">3rd Place</p>
-                  <p className="text-2xl font-bold">1 Day</p>
+                  <p className="text-2xl font-bold"><span className="wb-num"><span className="wb-num">1</span></span> Day</p>
                   <p className="text-sm text-[#A8A29E]">Exclusive Ads</p>
                 </div>
               </div>
@@ -353,15 +353,15 @@ const AdvertiserDashboard = () => {
               
               <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mb-8">
                 <div className="bg-black/40 rounded-xl p-4">
-                  <p className="text-4xl font-bold text-red-500">$100K</p>
+                  <p className="text-4xl font-bold text-red-500"><span className="wb-num"><span className="wb-num">$100K</span></span></p>
                   <p className="text-sm text-[#A8A29E]">Entry Fee</p>
                 </div>
                 <div className="bg-black/40 rounded-xl p-4">
-                  <p className="text-4xl font-bold text-[#D4AF37]">7 Days</p>
+                  <p className="text-4xl font-bold text-[#D4AF37]"><span className="wb-num"><span className="wb-num">7</span></span> Days</p>
                   <p className="text-sm text-[#A8A29E]">Exclusive Ads</p>
                 </div>
                 <div className="bg-black/40 rounded-xl p-4">
-                  <p className="text-4xl font-bold text-white">1</p>
+                  <p className="text-4xl font-bold text-white"><span className="wb-num"><span className="wb-num">1</span></span></p>
                   <p className="text-sm text-[#A8A29E]">Winner Only</p>
                 </div>
               </div>
@@ -377,7 +377,7 @@ const AdvertiserDashboard = () => {
             <div className="glass rounded-2xl p-6">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-red-500" />
-                January 2026 War Room
+                January <span className="wb-num">2026</span> War Room
               </h3>
               
               {warRoom ? (
@@ -414,7 +414,7 @@ const AdvertiserDashboard = () => {
               <ul className="space-y-3 text-[#A8A29E]">
                 <li className="flex items-start gap-3">
                   <Zap className="w-5 h-5 text-red-500 mt-0.5" />
-                  <span>$100,000 USD non-refundable entry fee required</span>
+                  <span><span className="wb-num"><span className="wb-num">$100</span></span>,<span className="wb-num"><span className="wb-num">000</span></span> USD non-refundable entry fee required</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Zap className="w-5 h-5 text-red-500 mt-0.5" />
@@ -422,7 +422,7 @@ const AdvertiserDashboard = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <Zap className="w-5 h-5 text-red-500 mt-0.5" />
-                  <span>Winner receives 7 consecutive days of exclusive ad placement</span>
+                  <span>Winner receives <span className="wb-num"><span className="wb-num">7</span></span> consecutive days of exclusive ad placement</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Zap className="w-5 h-5 text-red-500 mt-0.5" />
@@ -460,7 +460,7 @@ const AdvertiserDashboard = () => {
                 </div>
                 <div className="bg-white/5 rounded-xl p-4 text-center">
                   <p className="text-2xl mb-2">✓</p>
-                  <p className="font-semibold">100% Human</p>
+                  <p className="font-semibold"><span className="wb-num"><span className="wb-num">100</span></span>% Human</p>
                   <p className="text-xs text-[#A8A29E]">TIV-TEK verified</p>
                 </div>
               </div>
@@ -539,7 +539,7 @@ const AdvertiserDashboard = () => {
                 Solana Blockchain Transparency
               </h3>
               <p className="text-[#A8A29E] mb-4">
-                Every G5 GOLD transaction is recorded on the Solana blockchain. Merchants can monitor 
+                Every <span className="g5-gold">G5 GOLD</span> transaction is recorded on the Solana blockchain. Merchants can monitor 
                 citizen spending in their stores (online and offline) in real-time via countryofchrist.sol
               </p>
               <a 

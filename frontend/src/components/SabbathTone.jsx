@@ -176,7 +176,7 @@ const SabbathTone = ({ onComplete }) => {
         <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-b from-purple-500 to-pink-600 flex items-center justify-center">
           <Waves className="w-10 h-10 text-white" />
         </div>
-        <h2 className="text-2xl font-serif text-white mb-2">528 Hz Sabbath Tone</h2>
+        <h2 className="text-2xl font-serif text-white mb-2"><span className="wb-num"><span className="wb-num">528</span></span> Hz Sabbath Tone</h2>
         <p className="text-[#A8A29E] text-sm">DNA Restoration Frequency</p>
         <p className="text-purple-400 text-xs mt-1">The "Love Frequency" • Heartbeat Style</p>
       </div>
@@ -272,7 +272,7 @@ const SabbathTone = ({ onComplete }) => {
       {/* Benefits */}
       <div className="mt-6 p-4 bg-purple-500/10 rounded-xl">
         <p className="text-xs text-center text-purple-300">
-          528 Hz is known as the "Miracle Tone" — associated with DNA repair, 
+          <span className="wb-num">528</span> Hz is known as the "Miracle Tone" — associated with DNA repair, 
           transformation, and bringing about positive change. Combined with 
           heartbeat rhythm for deep relaxation.
         </p>

@@ -4,6 +4,9 @@ import {
   CheckCircle, FileText, Scale, Heart, ChevronDown, ChevronUp,
   BookOpen, Lock, Handshake, Star, Zap, MapPin, Clock
 } from 'lucide-react';
+import CountryOutline from './CountryOutline';
+import RailroadFence from './RailroadFence';
+import AdvertiserDeclaration from './AdvertiserDeclaration';
 
 const Constitution = () => {
   const [expandedSection, setExpandedSection] = useState('preamble');
@@ -14,7 +17,12 @@ const Constitution = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#FAFAF9]" data-testid="constitution-page">
+    <div className="min-h-screen folded-map text-[#FAFAF9] relative" data-testid="constitution-page">
+      <CountryOutline country={activeTab === 'covenant' ? 'usa' : 'canada'} />
+      <div className="relative z-10">
+      <div className="pt-4 px-4">
+        <RailroadFence label={activeTab === 'covenant' ? 'Merchant Covenant' : 'Constitution'} ties={28} />
+      </div>
       {/* Header */}
       <header className="bg-gradient-to-b from-[#1a1a1a] to-[#050505] py-12 border-b border-[#D4AF37]/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -104,7 +112,7 @@ const Constitution = () => {
                     <li><strong className="text-white">The Crypto Christian Network</strong> — Our unified digital community</li>
                     <li><strong className="text-white">Crypto Walking With Christ</strong> — The audible scripture platform</li>
                     <li><strong className="text-white">The Crypto Christian Closet</strong> — Our phygital commerce system</li>
-                    <li><strong className="text-white">G5 GOLD</strong> — Our sovereign closed-loop reward currency</li>
+                    <li><strong className="text-white"><span className="g5-gold">G5 GOLD</span></strong> — Our sovereign closed-loop reward currency</li>
                   </ul>
                 </div>
               )}
@@ -121,7 +129,7 @@ const Constitution = () => {
                     <Crown className="w-6 h-6 text-purple-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article I — The Sovereign Identity</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">I</span> — The Sovereign Identity</h2>
                     <p className="text-sm text-[#A8A29E]">TIV-TEK Human Verification System</p>
                   </div>
                 </div>
@@ -129,10 +137,10 @@ const Constitution = () => {
               </button>
               {expandedSection === 'article1' && (
                 <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
-                  <h3 className="text-lg font-semibold text-white">Section 1: The TIV-TEK Trinity</h3>
+                  <h3 className="text-lg font-semibold text-white">Section <span className="wb-num"><span className="wb-num">1</span></span>: The TIV-TEK Trinity</h3>
                   <p>
                     The Country of Christ employs the TIV-TEK (Temporal Identity Verification through Technological 
-                    Kinetic Evidence) system as its foundation for 100% human verification. This trinity consists of:
+                    Kinetic Evidence) system as its foundation for <span className="wb-num">100</span>% human verification. This trinity consists of:
                   </p>
                   <div className="grid md:grid-cols-3 gap-4 my-4">
                     <div className="bg-white/5 rounded-xl p-4 text-center">
@@ -152,14 +160,14 @@ const Constitution = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 2: The 20-Second Covenant</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">2</span></span>: The <span className="wb-num"><span className="wb-num">20</span></span>-Second Covenant</h3>
                   <p>
-                    Every citizen must perform the slide verification within 10 seconds of the verification window 
-                    opening (20 seconds after session start). This biological response pattern, combined with 
+                    Every citizen must perform the slide verification within <span className="wb-num">10</span> seconds of the verification window 
+                    opening (<span className="wb-num">20</span> seconds after session start). This biological response pattern, combined with 
                     temporal and spatial data, creates an unforgeable proof of humanity.
                   </p>
                   
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 3: Identity Without Invasion</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">3</span></span>: Identity Without Invasion</h3>
                   <p>
                     The Country of Christ guarantees that citizenship requires:
                   </p>
@@ -195,7 +203,7 @@ const Constitution = () => {
                     <Coins className="w-6 h-6 text-[#D4AF37]" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article II — G5 GOLD Currency</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">II</span> — <span className="g5-gold">G5 GOLD</span> Currency</h2>
                     <p className="text-sm text-[#A8A29E]">The Closed-Loop Sovereign Economy</p>
                   </div>
                 </div>
@@ -203,9 +211,9 @@ const Constitution = () => {
               </button>
               {expandedSection === 'article2' && (
                 <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
-                  <h3 className="text-lg font-semibold text-white">Section 1: Definition & Purpose</h3>
+                  <h3 className="text-lg font-semibold text-white">Section <span className="wb-num"><span className="wb-num">1</span></span>: Definition & Purpose</h3>
                   <p>
-                    G5 GOLD is the official closed-loop, off-chain reward currency of the Country of Christ. 
+                    <span className="g5-gold">G5 GOLD</span> is the official closed-loop, off-chain reward currency of the Country of Christ. 
                     It serves as the medium of exchange between citizens and participating merchants within 
                     our ecosystem.
                   </p>
@@ -215,31 +223,31 @@ const Constitution = () => {
                     <ul className="space-y-1 text-sm">
                       <li>• <strong>G</strong>race — Earned through faithful listening</li>
                       <li>• <strong>G</strong>iving — Must be spent to unlock next rewards</li>
-                      <li>• <strong>G</strong>rowth — $3/hr raises for 90-day perfect streaks</li>
-                      <li>• <strong>G</strong>uaranteed — 100% backed by merchant inventory</li>
+                      <li>• <strong>G</strong>rowth — <span className="wb-num"><span className="wb-num">$3</span></span>/hr raises for <span className="wb-num"><span className="wb-num">90</span></span>-day perfect streaks</li>
+                      <li>• <strong>G</strong>uaranteed — <span className="wb-num"><span className="wb-num">100</span></span>% backed by merchant inventory</li>
                       <li>• <strong>G</strong>odly — Used only within the sanctified economy</li>
                     </ul>
                   </div>
 
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 2: Earning Mechanism</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">2</span></span>: Earning Mechanism</h3>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Citizens earn G5 GOLD at a base rate of <strong className="text-[#D4AF37]">$13.00/hour</strong> for verified scripture listening</li>
-                    <li>Payout occurs upon completion of each <strong className="text-[#D4AF37]">33-hour milestone</strong></li>
-                    <li>Perfect 90-day streaks (all three pillars) unlock permanent <strong className="text-[#D4AF37]">$3.00/hr raises</strong></li>
+                    <li>Citizens earn <span className="g5-gold">G5 GOLD</span> at a base rate of <strong className="text-[#D4AF37]"><span className="wb-num"><span className="wb-num">$13.00</span></span>/hour</strong> for verified scripture listening</li>
+                    <li>Payout occurs upon completion of each <strong className="text-[#D4AF37]"><span className="wb-num"><span className="wb-num">33</span></span>-hour milestone</strong></li>
+                    <li>Perfect <span className="wb-num"><span className="wb-num">90</span></span>-day streaks (all three pillars) unlock permanent <strong className="text-[#D4AF37]"><span className="wb-num"><span className="wb-num">$3.00</span></span>/hr raises</strong></li>
                     <li>Raises compound infinitely for lifetime citizens</li>
                   </ul>
 
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 3: Spending Requirement</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">3</span></span>: Spending Requirement</h3>
                   <p>
-                    G5 GOLD must be spent before the next payout can be received. This ensures continuous 
+                    <span className="g5-gold">G5 GOLD</span> must be spent before the next payout can be received. This ensures continuous 
                     circulation within the economy and prevents hoarding. Citizens have access to the 
                     <strong className="text-white"> Crypto Christian Closet</strong> filled with merchandise 
                     donated by covenant-bound merchants.
                   </p>
 
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 4: Blockchain Transparency</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">4</span></span>: Blockchain Transparency</h3>
                   <p>
-                    All G5 GOLD transactions are recorded on the Solana blockchain via 
+                    All <span className="g5-gold">G5 GOLD</span> transactions are recorded on the Solana blockchain via 
                     <strong className="text-purple-400"> countryofchrist.sol</strong>. This provides:
                   </p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
@@ -262,7 +270,7 @@ const Constitution = () => {
                     <Star className="w-6 h-6 text-green-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article III — The Three Pillars</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">III</span> — The Three Pillars</h2>
                     <p className="text-sm text-[#A8A29E]">Requirements for Perfect Citizenship</p>
                   </div>
                 </div>
@@ -271,7 +279,7 @@ const Constitution = () => {
               {expandedSection === 'article3' && (
                 <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
                   <p>
-                    To qualify for the $3.00/hour perpetual raise, citizens must maintain a perfect 90-day 
+                    To qualify for the <span className="wb-num">$3.00</span>/hour perpetual raise, citizens must maintain a perfect <span className="wb-num">90</span>-day 
                     streak across all three pillars:
                   </p>
                   
@@ -282,7 +290,7 @@ const Constitution = () => {
                         <h4 className="font-semibold text-white">Pillar I: Verification Faithfulness</h4>
                       </div>
                       <p className="text-sm">
-                        Never miss a 10-second slide verification window. The TIV-TEK system monitors every 
+                        Never miss a <span className="wb-num">10</span>-second slide verification window. The TIV-TEK system monitors every 
                         verification attempt. One miss resets your Pillar I streak to zero.
                       </p>
                     </div>
@@ -304,7 +312,7 @@ const Constitution = () => {
                         <h4 className="font-semibold text-white">Pillar III: Sabbath Restoration</h4>
                       </div>
                       <p className="text-sm">
-                        Participate in every Sunday 18-minute 528 Hz universal restoration session. This is 
+                        Participate in every Sunday <span className="wb-num">18</span>-minute <span className="wb-num">528</span> Hz universal restoration session. This is 
                         the collective healing of our nation.
                       </p>
                     </div>
@@ -316,7 +324,7 @@ const Constitution = () => {
                       <li>• Missing a slide verification: <strong className="text-red-400">-1 hour from ledger</strong> (not clock)</li>
                       <li>• Missing Saturday service: <strong className="text-red-400">Pillar II streak reset</strong></li>
                       <li>• Missing Sunday sabbath: <strong className="text-red-400">Pillar III streak reset</strong></li>
-                      <li>• No G5 GOLD is ever taken—only streaks and ledger time</li>
+                      <li>• No <span className="g5-gold">G5 GOLD</span> is ever taken—only streaks and ledger time</li>
                     </ul>
                   </div>
                 </div>
@@ -334,7 +342,7 @@ const Constitution = () => {
                     <Users className="w-6 h-6 text-blue-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article IV — Citizen Rights</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">IV</span> — Citizen Rights</h2>
                     <p className="text-sm text-[#A8A29E]">Inalienable Rights of Every Citizen</p>
                   </div>
                 </div>
@@ -347,17 +355,17 @@ const Constitution = () => {
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-[#D4AF37] font-bold">1</span>
+                        <span className="text-[#D4AF37] font-bold"><span className="wb-num"><span className="wb-num">1</span></span></span>
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">The Right to Earn</h4>
-                        <p className="text-sm">Access to G5 GOLD earning through scripture listening, regardless of age (14+), economic status, or geographic location.</p>
+                        <p className="text-sm">Access to <span className="g5-gold">G5 GOLD</span> earning through scripture listening, regardless of age (<span className="wb-num"><span className="wb-num">14</span></span>+), economic status, or geographic location.</p>
                       </div>
                     </div>
                     
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-[#D4AF37] font-bold">2</span>
+                        <span className="text-[#D4AF37] font-bold"><span className="wb-num"><span className="wb-num">2</span></span></span>
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">The Right to Privacy</h4>
@@ -367,27 +375,27 @@ const Constitution = () => {
                     
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-[#D4AF37] font-bold">3</span>
+                        <span className="text-[#D4AF37] font-bold"><span className="wb-num"><span className="wb-num">3</span></span></span>
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">The Right to Growth</h4>
-                        <p className="text-sm">Perpetual $3.00/hour raises for maintaining perfect 90-day pillars. No ceiling on earnings.</p>
+                        <p className="text-sm">Perpetual <span className="wb-num"><span className="wb-num">$3.00</span></span>/hour raises for maintaining perfect <span className="wb-num"><span className="wb-num">90</span></span>-day pillars. No ceiling on earnings.</p>
                       </div>
                     </div>
                     
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-[#D4AF37] font-bold">4</span>
+                        <span className="text-[#D4AF37] font-bold"><span className="wb-num"><span className="wb-num">4</span></span></span>
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">The Right to Transparency</h4>
-                        <p className="text-sm">Full visibility into all G5 GOLD transactions, merchant donations, and ecosystem operations via the Solana blockchain.</p>
+                        <p className="text-sm">Full visibility into all <span className="g5-gold">G5 GOLD</span> transactions, merchant donations, and ecosystem operations via the Solana blockchain.</p>
                       </div>
                     </div>
                     
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-full bg-[#D4AF37]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-[#D4AF37] font-bold">5</span>
+                        <span className="text-[#D4AF37] font-bold"><span className="wb-num"><span className="wb-num">5</span></span></span>
                       </div>
                       <div>
                         <h4 className="font-semibold text-white">The Right to Minimal Profile</h4>
@@ -410,7 +418,7 @@ const Constitution = () => {
                     <Heart className="w-6 h-6 text-pink-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article V — The Crypto Christian Closet</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">V</span> — The Crypto Christian Closet</h2>
                     <p className="text-sm text-[#A8A29E]">The Phygital Commerce System</p>
                   </div>
                 </div>
@@ -418,14 +426,14 @@ const Constitution = () => {
               </button>
               {expandedSection === 'article5' && (
                 <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
-                  <h3 className="text-lg font-semibold text-white">Section 1: Definition</h3>
+                  <h3 className="text-lg font-semibold text-white">Section <span className="wb-num"><span className="wb-num">1</span></span>: Definition</h3>
                   <p>
-                    The Crypto Christian Closet is the official marketplace where citizens spend their G5 GOLD. 
+                    The Crypto Christian Closet is the official marketplace where citizens spend their <span className="g5-gold">G5 GOLD</span>. 
                     It operates as a <strong className="text-white">phygital twin</strong>—a digital inventory 
                     connected to physical fulfillment.
                   </p>
 
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 2: Inventory Model</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">2</span></span>: Inventory Model</h3>
                   <p>
                     The Closet does not warehouse products. Instead:
                   </p>
@@ -436,9 +444,9 @@ const Constitution = () => {
                     <li>No inventory risk for the Country of Christ</li>
                   </ul>
 
-                  <h3 className="text-lg font-semibold text-white mt-6">Section 3: Acceptance Requirement</h3>
+                  <h3 className="text-lg font-semibold text-white mt-6">Section <span className="wb-num"><span className="wb-num">3</span></span>: Acceptance Requirement</h3>
                   <p>
-                    All covenant merchants must accept G5 GOLD in their stores—both online and offline. 
+                    All covenant merchants must accept <span className="g5-gold">G5 GOLD</span> in their stores—both online and offline. 
                     This creates a circular economy where:
                   </p>
                   <div className="bg-white/5 rounded-xl p-4 mt-2">
@@ -461,7 +469,7 @@ const Constitution = () => {
                     <FileText className="w-6 h-6 text-orange-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article VI — Amendments</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">VI</span> — Amendments</h2>
                     <p className="text-sm text-[#A8A29E]">Evolution of the Constitution</p>
                   </div>
                 </div>
@@ -474,7 +482,7 @@ const Constitution = () => {
                   </p>
                   <ol className="list-decimal list-inside space-y-2 ml-4">
                     <li>Proposal submitted to the Constitutional Council</li>
-                    <li>30-day public comment period for all citizens</li>
+                    <li><span className="wb-num"><span className="wb-num">30</span></span>-day public comment period for all citizens</li>
                     <li>Two-thirds majority vote of active citizens</li>
                     <li>Amendment recorded permanently on Solana blockchain</li>
                   </ol>
@@ -529,7 +537,7 @@ const Constitution = () => {
                 This Business Covenant ("Covenant") establishes the binding agreement between participating 
                 merchants ("Advertisers") and the Country of Christ ecosystem. By entering this Covenant, 
                 Advertisers gain access to the most valuable customer base in digital commerce: 
-                <strong className="text-white"> 100% verified humans with purchasing power and zero fraud risk</strong>.
+                <strong className="text-white"> <span className="wb-num"><span className="wb-num">100</span></span>% verified humans with purchasing power and zero fraud risk</strong>.
               </p>
             </section>
 
@@ -537,7 +545,7 @@ const Constitution = () => {
             <section className="glass rounded-2xl p-6">
               <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2">
                 <Lock className="w-5 h-5 text-[#D4AF37]" />
-                Section 1: Entry Requirements
+                Section <span className="wb-num">1</span>: Entry Requirements
               </h3>
               <div className="space-y-4 text-[#A8A29E]">
                 <p>To become a Covenant Merchant, Advertisers must:</p>
@@ -548,17 +556,17 @@ const Constitution = () => {
                       <h4 className="font-semibold text-white">Monthly Buy-In</h4>
                     </div>
                     <p className="text-sm">
-                      Commit to a minimum <strong className="text-[#D4AF37]">$25,000 USD</strong> monthly 
+                      Commit to a minimum <strong className="text-[#D4AF37]"><span className="wb-num"><span className="wb-num">$25</span></span>,<span className="wb-num"><span className="wb-num">000</span></span> USD</strong> monthly 
                       recurring merchandise donation to the Crypto Christian Closet.
                     </p>
                   </div>
                   <div className="bg-white/5 rounded-xl p-4">
                     <div className="flex items-center gap-2 mb-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
-                      <h4 className="font-semibold text-white">G5 GOLD Acceptance</h4>
+                      <h4 className="font-semibold text-white"><span className="g5-gold">G5 GOLD</span> Acceptance</h4>
                     </div>
                     <p className="text-sm">
-                      Accept G5 GOLD as payment in <strong className="text-green-400">all stores</strong>—online 
+                      Accept <span className="g5-gold">G5 GOLD</span> as payment in <strong className="text-green-400">all stores</strong>—online 
                       and offline locations without exception.
                     </p>
                   </div>
@@ -570,7 +578,7 @@ const Constitution = () => {
             <section className="glass rounded-2xl p-6 border border-[#D4AF37]/30">
               <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2">
                 <Eye className="w-5 h-5 text-[#D4AF37]" />
-                Section 2: 100% Transparency Mandate
+                Section <span className="wb-num">2</span>: <span className="wb-num">100</span>% Transparency Mandate
               </h3>
               <div className="space-y-4 text-[#A8A29E]">
                 <p className="font-semibold text-white">
@@ -610,7 +618,7 @@ const Constitution = () => {
             <section className="glass rounded-2xl p-6">
               <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2">
                 <Star className="w-5 h-5 text-[#D4AF37]" />
-                Section 3: What You Receive
+                Section <span className="wb-num">3</span>: What You Receive
               </h3>
               <div className="space-y-4 text-[#A8A29E]">
                 <p className="font-semibold text-white">
@@ -625,10 +633,10 @@ const Constitution = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <Shield className="w-5 h-5 text-green-500" />
-                        <span><strong className="text-white">100% Human Verified</strong></span>
+                        <span><strong className="text-white"><span className="wb-num"><span className="wb-num">100</span></span>% Human Verified</strong></span>
                       </div>
                       <p className="text-sm ml-7">
-                        TIV-TEK verification every 20 seconds eliminates bots, farms, and fraud
+                        TIV-TEK verification every <span className="wb-num">20</span> seconds eliminates bots, farms, and fraud
                       </p>
                       
                       <div className="flex items-center gap-2">
@@ -644,7 +652,7 @@ const Constitution = () => {
                         <span><strong className="text-white">Pre-Funded Customers</strong></span>
                       </div>
                       <p className="text-sm ml-7">
-                        We give citizens the G5 GOLD to spend in YOUR stores
+                        We give citizens the <span className="g5-gold">G5 GOLD</span> to spend in YOUR stores
                       </p>
                     </div>
                     
@@ -682,7 +690,7 @@ const Constitution = () => {
             <section className="glass rounded-2xl p-6">
               <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2">
                 <Crown className="w-5 h-5 text-[#D4AF37]" />
-                Section 4: Weekly Competition & Ad Slots
+                Section <span className="wb-num">4</span>: Weekly Competition & Ad Slots
               </h3>
               <div className="space-y-4 text-[#A8A29E]">
                 <p>
@@ -693,19 +701,19 @@ const Constitution = () => {
                   <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 text-center">
                     <Crown className="w-8 h-8 text-yellow-400 mx-auto mb-2" />
                     <h4 className="font-bold text-yellow-400">1st Place</h4>
-                    <p className="text-2xl font-bold text-white">4 Days</p>
+                    <p className="text-2xl font-bold text-white"><span className="wb-num"><span className="wb-num">4</span></span> Days</p>
                     <p className="text-xs">Exclusive Ad Placement</p>
                   </div>
                   <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4 text-center">
                     <Crown className="w-8 h-8 text-gray-300 mx-auto mb-2" />
                     <h4 className="font-bold text-gray-300">2nd Place</h4>
-                    <p className="text-2xl font-bold text-white">2 Days</p>
+                    <p className="text-2xl font-bold text-white"><span className="wb-num"><span className="wb-num">2</span></span> Days</p>
                     <p className="text-xs">Exclusive Ad Placement</p>
                   </div>
                   <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-center">
                     <Crown className="w-8 h-8 text-amber-600 mx-auto mb-2" />
                     <h4 className="font-bold text-amber-600">3rd Place</h4>
-                    <p className="text-2xl font-bold text-white">1 Day</p>
+                    <p className="text-2xl font-bold text-white"><span className="wb-num"><span className="wb-num">1</span></span> Day</p>
                     <p className="text-xs">Exclusive Ad Placement</p>
                   </div>
                 </div>
@@ -715,8 +723,8 @@ const Constitution = () => {
                     ⚔️ Monthly War Room
                   </h4>
                   <p className="text-sm mt-2">
-                    For <strong className="text-white">$100,000 USD</strong> entry fee, compete for 
-                    <strong className="text-white"> 7 consecutive days</strong> of exclusive advertising. 
+                    For <strong className="text-white"><span className="wb-num"><span className="wb-num">$100</span></span>,<span className="wb-num"><span className="wb-num">000</span></span> USD</strong> entry fee, compete for 
+                    <strong className="text-white"> <span className="wb-num"><span className="wb-num">7</span></span> consecutive days</strong> of exclusive advertising. 
                     One winner only—no runner-ups, no refunds, no mercy.
                   </p>
                 </div>
@@ -727,7 +735,7 @@ const Constitution = () => {
             <section className="glass rounded-2xl p-6 border border-purple-500/30">
               <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2">
                 <Eye className="w-5 h-5 text-purple-400" />
-                Section 5: The Transparent Playbook
+                Section <span className="wb-num">5</span>: The Transparent Playbook
               </h3>
               <div className="space-y-4 text-[#A8A29E]">
                 <p className="font-semibold text-white">
@@ -738,7 +746,7 @@ const Constitution = () => {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-start gap-2">
                       <Eye className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
-                      <span><strong className="text-white">Mercy Map:</strong> Real-time geographic distribution of G5 GOLD and regional influence</span>
+                      <span><strong className="text-white">Mercy Map:</strong> Real-time geographic distribution of <span className="g5-gold">G5 GOLD</span> and regional influence</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Eye className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
@@ -770,15 +778,15 @@ const Constitution = () => {
             <section className="glass rounded-2xl p-6">
               <h3 className="text-xl font-serif text-white mb-4 flex items-center gap-2">
                 <Scale className="w-5 h-5 text-red-400" />
-                Section 6: Covenant Termination
+                Section <span className="wb-num">6</span>: Covenant Termination
               </h3>
               <div className="space-y-4 text-[#A8A29E]">
                 <p>
                   The Covenant may be terminated under the following conditions:
                 </p>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Failure to maintain $25,000 monthly donation commitment</li>
-                  <li>Refusal to accept G5 GOLD at any location</li>
+                  <li>Failure to maintain <span className="wb-num"><span className="wb-num">$25</span></span>,<span className="wb-num"><span className="wb-num">000</span></span> monthly donation commitment</li>
+                  <li>Refusal to accept <span className="g5-gold">G5 GOLD</span> at any location</li>
                   <li>Violation of transparency requirements</li>
                   <li>Fraudulent activity detected on blockchain</li>
                   <li>Actions harmful to citizens of the Country of Christ</li>
@@ -814,10 +822,14 @@ const Constitution = () => {
       <footer className="bg-[#0a0a0a] border-t border-white/10 py-8">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-[#A8A29E] text-sm">
-            © 2026 Country of Christ • countryofchrist.sol • All rights reserved under divine law
+            © <span className="wb-num">2026</span> Country of Christ • countryofchrist.sol • All rights reserved under divine law
           </p>
         </div>
       </footer>
+      <div className="px-4 pb-4">
+        <RailroadFence ties={28} />
+      </div>
+      </div>
     </div>
   );
 };

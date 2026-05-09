@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Play, Pause, Clock, Flame, ChevronUp, ChevronDown, Coins, Upload, Heart, Music, AlertTriangle, Check, Award, Trophy } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import SabbathTone from './SabbathTone';
-import Achievements from './Achievements';
 
 const AudioPlayer = () => {
   // Day mode: 'weekday' (Mon-Fri), 'saturday' (Good Samaritan), 'sunday' (Sabbath)
@@ -571,7 +570,7 @@ const AudioPlayer = () => {
                     <>
                       <p className="text-xs text-[#D4AF37] mb-1 font-bold">⚡ SLIDE NOW!</p>
                       <p className="text-3xl font-mono text-white">{slideWindowCountdown}s</p>
-                      <p className="text-xs text-red-400 mt-1">Penalty at 0!</p>
+                      <p className="text-xs text-red-400 mt-1">Penalty at <span className="wb-num"><span className="wb-num">0</span></span>!</p>
                     </>
                   )}
                   {verificationPhase === 'success' && (
@@ -630,7 +629,7 @@ const AudioPlayer = () => {
                   <Music className="w-16 h-16 text-purple-400 mx-auto mb-4" />
                   <h2 className="text-2xl font-serif text-shadow mb-2">Sabbath Restoration</h2>
                   <p className="text-[#A8A29E] text-sm mb-4">
-                    18-minute 528 Hz DNA restoration tone
+                    <span className="wb-num">18</span>-minute <span className="wb-num">528</span> Hz DNA restoration tone
                   </p>
                   <p className="text-[#A8A29E]">Slide to begin Sabbath session</p>
                 </div>
@@ -699,7 +698,7 @@ const AudioPlayer = () => {
                 <Coins className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div className="text-left">
-                <p className="text-xs text-[#A8A29E]">G5 GOLD Balance</p>
+                <p className="text-xs text-[#A8A29E]"><span className="g5-gold">G5 GOLD</span> Balance</p>
                 <p className="text-xl font-semibold text-[#D4AF37]" data-testid="gold-balance">
                   ${parseFloat(ledgerData.treasure_balance || 0).toFixed(2)}
                 </p>
@@ -723,7 +722,7 @@ const AudioPlayer = () => {
               
               {/* Three Pillars */}
               <div className="space-y-2">
-                <p className="text-xs text-[#A8A29E] text-center">TIV-TEK Trinity Pillars (90-day streaks)</p>
+                <p className="text-xs text-[#A8A29E] text-center">TIV-TEK Trinity Pillars (<span className="wb-num"><span className="wb-num">90</span></span>-day streaks)</p>
                 <div className="grid grid-cols-3 gap-2">
                   <div className="text-center p-2 bg-[#D4AF37]/10 rounded-xl">
                     <p className="text-xs text-[#A8A29E]">Verification</p>
@@ -757,7 +756,7 @@ const AudioPlayer = () => {
               Repentance Penalty
             </h2>
             <p className="text-center text-[#A8A29E]">
-              1 hour deducted from your ledger.
+              <span className="wb-num">1</span> hour deducted from your ledger.
             </p>
             <p className="text-center text-xs text-[#A8A29E] mt-4">
               The atomic time ledger has recorded this verification failure.

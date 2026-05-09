@@ -273,7 +273,7 @@ const BattleMode = () => {
                         <span className="text-[#A8A29E]">—</span>
                       )}
                       <span className={
-                        m.trend_percentage > 0 ? 'text-green-500' : 
+                        m.trend_percentage > <span className="wb-num">0</span> ? 'text-green-500' : 
                         m.trend_percentage < 0 ? 'text-red-500' : 'text-[#A8A29E]'
                       }>
                         {m.trend_percentage > 0 ? '+' : ''}{m.trend_percentage}%

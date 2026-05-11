@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Play, Pause, Clock, Flame, ChevronUp, ChevronDown, Coins, Upload, Heart, Music, AlertTriangle, Check, Award, Trophy } from 'lucide-react';
+import { Play, Pause, Clock, Flame, ChevronUp, ChevronDown, Coins, Upload, Heart, Music, AlertTriangle, Check, Award, Trophy, Triangle, Radio, ArrowRightLeft, BarChart3, Gem, ShieldCheck } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import SabbathTone from './SabbathTone';
 import SealLogo from './SealLogo';
@@ -483,283 +483,340 @@ const AudioPlayer = () => {
   };
 
   // ==================== RENDER ====================
+  // Live atomic clock for the ATOMIC TIME / GPSDO card
+  const [now, setNow] = useState(new Date());
+  useEffect(() => {
+    const tick = setInterval(() => setNow(new Date()), 100);
+    return () => clearInterval(tick);
+  }, []);
+
+  const atomicTime = `${now.getUTCHours().toString().padStart(2,'0')}:${now.getUTCMinutes().toString().padStart(2,'0')}:${now.getUTCSeconds().toString().padStart(2,'0')}`;
+  const atomicDecimal = Math.floor(now.getUTCMilliseconds() / 100);
+
   return (
-    <div className="min-h-screen relative overflow-hidden" data-testid="audio-player-screen">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.pexels.com/photos/7360548/pexels-photo-7360548.jpeg"
-          alt="Walking with Christ"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/80" />
-      </div>
+    <div className="min-h-screen bg-[#050505] text-[#FAFAF9] relative" data-testid="audio-player-screen">
+      <div className="max-w-2xl mx-auto px-4 py-6 space-y-5">
 
-      {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-between p-6 pb-8">
-        
-        {/* Header - Day Mode Indicator */}
-        <div className="w-full max-w-md space-y-3">
-          {/* Country of Christ Seal */}
-          <div className="flex justify-center pt-2">
-            <SealLogo variant="header" />
-          </div>
-          {/* Day Mode Badge */}
-          <div className="flex justify-center">
-            <div className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase ${
-              dayMode === 'weekday' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' :
-              dayMode === 'saturday' ? 'bg-green-500/20 text-green-400' :
-              'bg-purple-500/20 text-purple-400'
-            }`}>
-              {dayMode === 'weekday' && '📖 Scripture Day'}
-              {dayMode === 'saturday' && '🤝 Good Samaritan Day'}
-              {dayMode === 'sunday' && '🙏 Sabbath Day'}
-            </div>
-          </div>
-          
-          {/* Stats Bar */}
-          <div className="glass rounded-2xl p-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-[#D4AF37]" />
-              <span className="text-sm text-[#A8A29E]">Session</span>
-              <span className="font-mono text-[#FAFAF9]" data-testid="session-timer">
-                {dayMode === 'sunday' ? formatMinSec(sabbathSeconds) : formatTime(sessionSeconds)}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Flame className="w-5 h-5 text-orange-500" />
-              <span className="text-sm" data-testid="streak-days">
-                {ledgerData.track_streak_days || 0}d
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Center Content - Changes based on day */}
-        <div className="flex flex-col items-center gap-6 w-full max-w-md">
-          
-          {/* WEEKDAY VIEW */}
-          {dayMode === 'weekday' && (
-            <>
-              <div className="text-center">
-                <p className="text-xs tracking-[0.2em] uppercase font-bold text-[#D4AF37] mb-2">
-                  Progress to Payout
-                </p>
-                <p className="text-4xl font-light font-serif text-shadow" data-testid="hours-progress">
-                  {currentProgress.toFixed(1)} / 33 hrs
-                </p>
-              </div>
-
-              <div className="w-64 h-2 bg-white/10 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.8)] transition-all duration-500"
-                  style={{ width: `${(currentProgress / 33) * 100}%` }}
-                  data-testid="progress-bar"
-                />
-              </div>
-
-              {/* TIV-TEK Verification Display */}
-              {isPlaying && showVerification && (
-                <div className={`glass rounded-2xl p-4 w-full text-center ${
-                  verificationPhase === 'window_open' ? 'border-2 border-[#D4AF37] animate-pulse' :
-                  verificationPhase === 'failed' ? 'border-2 border-red-500' :
-                  verificationPhase === 'success' ? 'border-2 border-green-500' : ''
-                }`} data-testid="tivtek-verification">
-                  {verificationPhase === 'waiting' && (
-                    <>
-                      <p className="text-xs text-[#A8A29E] mb-1">Next verification in</p>
-                      <p className="text-3xl font-mono text-[#D4AF37]">{verificationCountdown}s</p>
-                    </>
-                  )}
-                  {verificationPhase === 'window_open' && (
-                    <>
-                      <p className="text-xs text-[#D4AF37] mb-1 font-bold">⚡ SLIDE NOW!</p>
-                      <p className="text-3xl font-mono text-white">{slideWindowCountdown}s</p>
-                      <p className="text-xs text-red-400 mt-1">Penalty at <span className="wb-num">0</span>!</p>
-                    </>
-                  )}
-                  {verificationPhase === 'success' && (
-                    <div className="flex items-center justify-center gap-2 text-green-400">
-                      <Check className="w-6 h-6" />
-                      <span>Verified!</span>
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
-          )}
-
-          {/* SATURDAY VIEW - Good Samaritan */}
-          {dayMode === 'saturday' && (
-            <div className="w-full space-y-4">
-              <div className="text-center">
-                <Heart className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h2 className="text-2xl font-serif text-shadow mb-2">Good Samaritan Day</h2>
-                <p className="text-[#A8A29E] text-sm">
-                  Perform one act of kindness and document it
-                </p>
-              </div>
-
-              {samaritanTask ? (
-                <div className="glass rounded-2xl p-6 space-y-4">
-                  <p className="text-center text-green-400 font-semibold">Task in Progress</p>
-                  <textarea
-                    value={taskDescription}
-                    onChange={(e) => setTaskDescription(e.target.value)}
-                    placeholder="Describe your Good Samaritan act..."
-                    className="w-full bg-white/10 rounded-xl p-4 text-white placeholder-[#A8A29E] resize-none h-24"
-                    data-testid="samaritan-description"
-                  />
-                  <button
-                    onClick={handleWitnessUpload}
-                    disabled={!taskDescription}
-                    className="w-full py-3 rounded-xl bg-green-500 text-black font-bold flex items-center justify-center gap-2 disabled:opacity-50"
-                    data-testid="submit-samaritan"
-                  >
-                    <Upload className="w-5 h-5" />
-                    Submit Witness
-                  </button>
-                </div>
-              ) : (
-                <p className="text-center text-[#A8A29E]">Slide to begin your task</p>
-              )}
-            </div>
-          )}
-
-          {/* SUNDAY VIEW - Sabbath 528 Hz */}
-          {dayMode === 'sunday' && (
-            <div className="w-full space-y-4">
-              {!sabbathActive ? (
-                <div className="text-center">
-                  <Music className="w-16 h-16 text-purple-400 mx-auto mb-4" />
-                  <h2 className="text-2xl font-serif text-shadow mb-2">Sabbath Restoration</h2>
-                  <p className="text-[#A8A29E] text-sm mb-4"> 18-minute <span className="wb-num">528</span> Hz DNA restoration tone
-                  </p>
-                  <p className="text-[#A8A29E]">Slide to begin Sabbath session</p>
-                </div>
-              ) : (
-                <SabbathTone onComplete={completeSabbath} />
-              )}
-            </div>
-          )}
-
-          {/* WALK/SLIDE BUTTON */}
-          <div className="w-full max-w-xs">
-            <div 
-              ref={sliderRef}
-              className={`h-20 rounded-full relative flex items-center px-2 cursor-pointer ${
-                isPlaying || sabbathActive || samaritanTask
-                  ? 'bg-black/60 border-2 border-[#D4AF37]' 
-                  : 'bg-black/40 border border-white/20'
-              } backdrop-blur-md`}
-              onMouseDown={handleSliderStart}
-              onMouseMove={handleSliderMove}
-              onMouseUp={handleSliderEnd}
-              onMouseLeave={handleSliderEnd}
-              onTouchStart={handleSliderStart}
-              onTouchMove={handleSliderMove}
-              onTouchEnd={handleSliderEnd}
-              data-testid="walk-slider"
-            >
-              {/* Slider handle */}
-              <div 
-                className={`w-16 h-16 rounded-full flex items-center justify-center absolute transition-none ${
-                  verificationPhase === 'window_open' 
-                    ? 'bg-gradient-to-b from-red-500 to-red-700 animate-pulse' 
-                    : 'bg-gradient-to-b from-[#D4AF37] to-[#B48E2D]'
-                } gold-glow`}
-                style={{ left: `calc(${sliderPosition}% - ${sliderPosition * 0.64}px + 8px)` }}
-                data-testid="walk-button"
-              >
-                {isPlaying || sabbathActive ? (
-                  <Pause className="w-8 h-8 text-black" />
-                ) : (
-                  <Play className="w-8 h-8 text-black ml-1" />
-                )}
-              </div>
-              
-              {/* Slide text */}
-              <span className="absolute inset-0 flex items-center justify-center text-sm text-[#A8A29E] pointer-events-none pl-16">
-                {sliderPosition < 30 && (
-                  verificationPhase === 'window_open' ? 'SLIDE NOW! →' :
-                  isPlaying || sabbathActive ? 'Slide to stop →' : 
-                  'Slide to walk →'
-                )}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom - Ledger */}
-        <div className="w-full max-w-md">
-          <button
-            onClick={() => setShowLedger(!showLedger)}
-            className="w-full glass rounded-2xl p-4 flex items-center justify-between"
-            data-testid="ledger-toggle"
+        {/* ============ TITLE ============ */}
+        <div className="flex items-center justify-center gap-4 pt-2">
+          <Triangle className="w-7 h-7 text-[#D4AF37]" />
+          <h1
+            className="font-bold tracking-[0.18em] text-3xl md:text-4xl"
+            style={{
+              fontFamily: "'Cinzel', serif",
+              background: 'linear-gradient(180deg,#FFE066 0%,#F5C842 40%,#D4AF37 70%,#8B6914 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(0 0 12px rgba(212,175,55,0.4))',
+            }}
+            data-testid="tivtek-trinity-title"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#D4AF37]/20 flex items-center justify-center">
-                <Coins className="w-5 h-5 text-[#D4AF37]" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs text-[#A8A29E]"><span className="g5-gold">G5 GOLD</span> Balance</p>
-                <p className="text-xl font-semibold text-[#D4AF37]" data-testid="gold-balance">
-                  ${parseFloat(ledgerData.treasure_balance || 0).toFixed(2)}
-                </p>
+            TIVTEK TRINITY
+          </h1>
+          <Triangle className="w-7 h-7 text-[#D4AF37]" style={{ transform: 'rotate(180deg)' }} />
+        </div>
+        <p className="text-center text-xs tracking-[0.35em] text-[#A8A29E] uppercase">
+          Verified Human Presence Protocol
+        </p>
+
+        {/* ============ SEAL OF AUTHORITY — large, centered, in open space ============ */}
+        <div className="flex justify-center py-2" data-testid="seal-of-authority">
+          <SealLogo variant="hero" withCaption={true} />
+        </div>
+
+        {/* ============ DAY MODE BADGE ============ */}
+        <div className="flex justify-center">
+          <div className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase ${
+            dayMode === 'weekday' ? 'bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/40' :
+            dayMode === 'saturday' ? 'bg-green-500/15 text-green-400 border border-green-500/40' :
+            'bg-[#3B82F6]/15 text-[#3B82F6] border border-[#3B82F6]/40'
+          }`}>
+            {dayMode === 'weekday' && 'Scripture Day'}
+            {dayMode === 'saturday' && 'Good Samaritan Day'}
+            {dayMode === 'sunday' && 'Sabbath Day'}
+          </div>
+        </div>
+
+        {/* ============ CARD 1 — ATOMIC TIME / GPSDO ============ */}
+        <div className="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5" data-testid="card-atomic-time">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[#A8A29E]">
+              <Radio className="w-4 h-4 text-[#D4AF37]" />
+              Atomic Time / GPSDO
+            </div>
+            <span className="text-[10px] tracking-[0.2em] uppercase text-green-400 font-bold">
+              ● Synced
+            </span>
+          </div>
+          <div className="text-center">
+            <p className="font-mono text-4xl md:text-5xl tracking-wider text-[#FAFAF9]">
+              <span className="wb-num">{atomicTime}</span>
+              <span className="text-[#3B82F6] text-2xl">.<span className="wb-num">{atomicDecimal}</span></span>
+            </p>
+            <p className="text-[10px] tracking-[0.25em] uppercase text-[#A8A29E] mt-2">
+              UTC — Fixed/DO Disciplined Oscillator
+            </p>
+          </div>
+        </div>
+
+        {/* ============ CARD 2 — HUMAN VERIFICATION (slide-to-walk) ============ */}
+        <div className={`rounded-2xl bg-[#0d0d0d] p-5 transition ${
+          verificationPhase === 'window_open' ? 'border-2 border-[#D4AF37] gold-glow' :
+          verificationPhase === 'failed' ? 'border-2 border-red-500' :
+          verificationPhase === 'success' ? 'border-2 border-green-500' :
+          'border border-[#1f1f1f]'
+        }`} data-testid="card-human-verification">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[#A8A29E]">
+              <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
+              Human Verification
+            </div>
+            <span className="text-[#D4AF37] font-mono text-lg" data-testid="verification-countdown">
+              {verificationPhase === 'window_open'
+                ? <><span className="wb-num">{slideWindowCountdown}</span>s</>
+                : <><span className="wb-num">{verificationCountdown}</span>s</>}
+            </span>
+          </div>
+
+          {/* SLIDE-TO-WALK button */}
+          <div
+            ref={sliderRef}
+            className="h-16 rounded-full relative flex items-center px-1.5 bg-[#1a1a1a] border border-[#2a2a2a] cursor-pointer overflow-hidden"
+            onMouseDown={handleSliderStart}
+            onMouseMove={handleSliderMove}
+            onMouseUp={handleSliderEnd}
+            onMouseLeave={handleSliderEnd}
+            onTouchStart={handleSliderStart}
+            onTouchMove={handleSliderMove}
+            onTouchEnd={handleSliderEnd}
+            data-testid="walk-slider"
+          >
+            <div
+              className={`w-12 h-12 rounded-full flex items-center justify-center absolute transition-none font-bold text-black text-lg ${
+                verificationPhase === 'window_open'
+                  ? 'bg-gradient-to-b from-red-500 to-red-700 text-white animate-pulse'
+                  : 'bg-gradient-to-b from-[#FFE066] to-[#D4AF37]'
+              }`}
+              style={{
+                left: `calc(${sliderPosition}% - ${sliderPosition * 0.5}px + 6px)`,
+                boxShadow: '0 0 16px rgba(212,175,55,0.65)',
+              }}
+              data-testid="walk-button"
+            >
+              {isPlaying ? <Pause className="w-5 h-5" /> : 'W'}
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none pl-12">
+              <div className="flex items-center gap-2 text-[#5a5a5a] text-sm tracking-[0.25em] font-medium">
+                <span>›</span><span>›</span><span>›</span>
+                <span className="ml-1 uppercase">
+                  {verificationPhase === 'window_open' ? 'Slide Now' :
+                   isPlaying ? 'Slide to stop' :
+                   'Slide to Walk'}
+                </span>
               </div>
             </div>
-            {showLedger ? <ChevronDown className="w-6 h-6 text-[#A8A29E]" /> : <ChevronUp className="w-6 h-6 text-[#A8A29E]" />}
-          </button>
+          </div>
 
-          {showLedger && (
-            <div className="glass rounded-2xl p-6 mt-4 space-y-4" data-testid="ledger-card">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-3 bg-white/5 rounded-xl">
-                  <p className="text-xs text-[#A8A29E] mb-1">Total Hours</p>
-                  <p className="text-2xl font-semibold">{totalHours.toFixed(1)}</p>
-                </div>
-                <div className="text-center p-3 bg-white/5 rounded-xl">
-                  <p className="text-xs text-[#A8A29E] mb-1">Hourly Rate</p>
-                  <p className="text-2xl font-semibold text-[#D4AF37]">${ledgerData.hourly_rate}/hr</p>
-                </div>
+          <p className="text-center text-xs text-[#A8A29E] mt-3 italic">
+            Mandatory verification — confirms human presence
+          </p>
+        </div>
+
+        {/* ============ CARD 3 — OFFLINE TOKEN ============ */}
+        <div className="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5" data-testid="card-offline-token">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[#A8A29E]">
+              <Coins className="w-4 h-4 text-[#D4AF37]" />
+              Offline Token
+            </div>
+            <span className="text-[10px] tracking-[0.18em] uppercase px-2 py-0.5 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#A8A29E]">
+              Not A Cryptocurrency
+            </span>
+          </div>
+          <div className="text-center my-2">
+            <div className="w-16 h-16 mx-auto rounded-xl bg-[#D4AF37] flex items-center justify-center" style={{ boxShadow: '0 0 20px rgba(212,175,55,0.55)' }}>
+              <span className="text-black text-3xl font-bold">G</span>
+            </div>
+            <p className="text-sm text-[#A8A29E] mt-2 italic"><span className="g5-gold">G5 GOLD</span> loyalty tokens earned</p>
+            <p className="text-2xl font-semibold text-[#D4AF37] mt-1" data-testid="gold-balance">
+              $<span className="wb-num">{parseFloat(ledgerData.treasure_balance || 0).toFixed(2)}</span>
+            </p>
+          </div>
+          <div className="flex items-center justify-between text-xs pt-3 border-t border-[#1f1f1f]">
+            <span className="text-[#A8A29E]">Today's verifications</span>
+            <span className="text-[#D4AF37] font-mono"><span className="wb-num">0</span></span>
+          </div>
+          <div className="flex items-center gap-2 text-[10px] text-[#A8A29E] mt-2">
+            <ArrowRightLeft className="w-3 h-3" />
+            Linked: <span className="font-mono text-[#3B82F6]">countryofchrist.sol</span> — Advertiser Verification
+          </div>
+        </div>
+
+        {/* ============ CARD 4 — REPUTATION SCORE ============ */}
+        <div className="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5 text-center" data-testid="card-reputation">
+          <p className="text-xs tracking-[0.3em] uppercase text-[#A8A29E] mb-3">Reputation Score</p>
+          <div className="w-16 h-16 mx-auto rounded-xl bg-[#D4AF37] flex items-center justify-center mb-3" style={{ boxShadow: '0 0 20px rgba(212,175,55,0.55)' }}>
+            <span className="text-black text-3xl font-bold">G</span>
+          </div>
+          <div className="w-full h-2 rounded-full bg-[#1f1f1f] overflow-hidden mb-3">
+            <div
+              className="h-full bg-gradient-to-r from-[#D4AF37] to-[#FFE066]"
+              style={{ width: `${Math.min(100, (currentProgress / 33) * 100)}%`, boxShadow: '0 0 12px rgba(212,175,55,0.6)' }}
+              data-testid="reputation-bar"
+            />
+          </div>
+          <p className="text-[#A8A29E] text-xs">
+            <span className="text-[#D4AF37] font-bold tracking-widest">G.O.D.</span> — Great God Give Good Grace
+          </p>
+        </div>
+
+        {/* ============ CARD 5 — FIVE PILLARS ============ */}
+        <div className="grid grid-cols-5 gap-2" data-testid="five-pillars-grid">
+          {[
+            { label: 'TALENT', icon: <Award className="w-5 h-5 text-[#D4AF37]" /> },
+            { label: 'TIME', icon: <Clock className="w-5 h-5 text-[#3B82F6]" /> },
+            { label: 'TREASURE', icon: <Gem className="w-5 h-5 text-red-400" /> },
+            { label: 'TRANSACTION', icon: <ArrowRightLeft className="w-5 h-5 text-green-400" /> },
+            { label: 'TRACK', icon: <BarChart3 className="w-5 h-5 text-[#A8A29E]" /> },
+          ].map((p) => (
+            <div key={p.label} className="rounded-xl bg-[#0d0d0d] border border-[#1f1f1f] p-3 flex flex-col items-center gap-1">
+              {p.icon}
+              <div className="w-8 h-8 rounded-md bg-[#D4AF37] flex items-center justify-center mt-1" style={{ boxShadow: '0 0 8px rgba(212,175,55,0.5)' }}>
+                <span className="text-black font-bold text-sm">G</span>
               </div>
-              
-              {/* Three Pillars */}
-              <div className="space-y-2">
-                <p className="text-xs text-[#A8A29E] text-center">TIV-TEK Trinity Pillars (<span className="wb-num">90</span>-day streaks)</p>
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="text-center p-2 bg-[#D4AF37]/10 rounded-xl">
-                    <p className="text-xs text-[#A8A29E]">Verification</p>
-                    <p className="text-lg font-semibold text-[#D4AF37]">{ledgerData.pillar_1_streak || 0}</p>
-                  </div>
-                  <div className="text-center p-2 bg-green-500/10 rounded-xl">
-                    <p className="text-xs text-[#A8A29E]">Samaritan</p>
-                    <p className="text-lg font-semibold text-green-400">{ledgerData.pillar_2_streak || 0}</p>
-                  </div>
-                  <div className="text-center p-2 bg-purple-500/10 rounded-xl">
-                    <p className="text-xs text-[#A8A29E]">Sabbath</p>
-                    <p className="text-lg font-semibold text-purple-400">{ledgerData.pillar_3_streak || 0}</p>
-                  </div>
-                </div>
+              <p className="text-[9px] tracking-[0.18em] text-[#A8A29E] mt-1">{p.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* ============ CARD 6 — THE 5TH LETTER · G ============ */}
+        <div className="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-6 text-center" data-testid="card-fifth-letter">
+          <p className="text-xs tracking-[0.3em] uppercase text-[#A8A29E] mb-4">The 5th Letter — G</p>
+          <p className="text-3xl font-bold tracking-[0.5em]">
+            <span className="g5-gold">G</span>
+            <span className="text-[#A8A29E]"> · </span>
+            <span className="g5-gold">O</span>
+            <span className="text-[#A8A29E]"> · </span>
+            <span className="g5-gold">D</span>
+          </p>
+          <p className="text-sm text-[#A8A29E] mt-3 italic">Great God Give Good Grace</p>
+          <p className="text-[10px] tracking-[0.25em] text-[#A8A29E] mt-4">
+            TALENT · TIME · TREASURE · TRANSACTION · TRACK
+          </p>
+        </div>
+
+        {/* ============ SATURDAY / SUNDAY view (preserved) ============ */}
+        {dayMode === 'saturday' && (
+          <div className="rounded-2xl bg-[#0d0d0d] border border-green-500/30 p-5 space-y-3" data-testid="saturday-card">
+            <div className="text-center">
+              <Heart className="w-12 h-12 text-green-400 mx-auto mb-2" />
+              <h2 className="text-xl font-serif">Good Samaritan Day</h2>
+              <p className="text-[#A8A29E] text-sm">Perform one act of kindness and document it</p>
+            </div>
+            {samaritanTask ? (
+              <>
+                <textarea
+                  value={taskDescription}
+                  onChange={(e) => setTaskDescription(e.target.value)}
+                  placeholder="Describe your Good Samaritan act..."
+                  className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-3 text-white placeholder-[#5a5a5a] resize-none h-24"
+                  data-testid="samaritan-description"
+                />
+                <button
+                  onClick={handleWitnessUpload}
+                  disabled={!taskDescription}
+                  className="w-full py-3 rounded-xl bg-green-500 text-black font-bold flex items-center justify-center gap-2 disabled:opacity-50"
+                  data-testid="submit-samaritan"
+                >
+                  <Upload className="w-5 h-5" />
+                  Submit Witness
+                </button>
+              </>
+            ) : (
+              <p className="text-center text-[#A8A29E] text-sm">Slide above to begin your task</p>
+            )}
+          </div>
+        )}
+
+        {dayMode === 'sunday' && (
+          <div className="rounded-2xl bg-[#0d0d0d] border border-[#3B82F6]/30 p-5 space-y-3" data-testid="sunday-card">
+            {!sabbathActive ? (
+              <div className="text-center">
+                <Music className="w-12 h-12 text-[#3B82F6] mx-auto mb-2" />
+                <h2 className="text-xl font-serif">Sabbath Restoration</h2>
+                <p className="text-[#A8A29E] text-sm">
+                  <span className="wb-num">18</span>-minute <span className="wb-num">528</span> Hz DNA restoration tone
+                </p>
+                <p className="text-[#A8A29E] mt-2 text-xs">Slide above to begin</p>
               </div>
-              
-              <p className="text-xs text-center text-[#A8A29E]">
-                {ledgerData.perfect_90_day_count || 0} raises earned • Next at 90 perfect days
+            ) : (
+              <SabbathTone onComplete={completeSabbath} />
+            )}
+          </div>
+        )}
+
+        {/* ============ EXPANDABLE LEDGER ============ */}
+        <button
+          onClick={() => setShowLedger(!showLedger)}
+          className="w-full rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-4 flex items-center justify-between"
+          data-testid="ledger-toggle"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#D4AF37]/15 flex items-center justify-center">
+              <Coins className="w-5 h-5 text-[#D4AF37]" />
+            </div>
+            <div className="text-left">
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8A29E]">Three Pillars Ledger</p>
+              <p className="text-sm text-[#FAFAF9]">
+                <span className="wb-num">{(ledgerData.pillar_1_streak || 0)}</span>·<span className="wb-num">{(ledgerData.pillar_2_streak || 0)}</span>·<span className="wb-num">{(ledgerData.pillar_3_streak || 0)}</span> day streak
               </p>
             </div>
-          )}
-        </div>
+          </div>
+          {showLedger ? <ChevronDown className="w-5 h-5 text-[#A8A29E]" /> : <ChevronUp className="w-5 h-5 text-[#A8A29E]" />}
+        </button>
+
+        {showLedger && (
+          <div className="rounded-2xl bg-[#0d0d0d] border border-[#1f1f1f] p-5 space-y-4" data-testid="ledger-card">
+            <div className="grid grid-cols-2 gap-3">
+              <div className="text-center p-3 rounded-xl bg-[#1a1a1a]">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8A29E] mb-1">Total Hours</p>
+                <p className="text-2xl font-semibold"><span className="wb-num">{totalHours.toFixed(1)}</span></p>
+              </div>
+              <div className="text-center p-3 rounded-xl bg-[#1a1a1a]">
+                <p className="text-[10px] tracking-[0.2em] uppercase text-[#A8A29E] mb-1">Hourly Rate</p>
+                <p className="text-2xl font-semibold text-[#D4AF37]">$<span className="wb-num">{ledgerData.hourly_rate}</span>/hr</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <div className="text-center p-2 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/20">
+                <p className="text-[10px] text-[#A8A29E]">Verification</p>
+                <p className="text-lg font-semibold text-[#D4AF37]"><span className="wb-num">{ledgerData.pillar_1_streak || 0}</span></p>
+              </div>
+              <div className="text-center p-2 rounded-xl bg-green-500/10 border border-green-500/20">
+                <p className="text-[10px] text-[#A8A29E]">Samaritan</p>
+                <p className="text-lg font-semibold text-green-400"><span className="wb-num">{ledgerData.pillar_2_streak || 0}</span></p>
+              </div>
+              <div className="text-center p-2 rounded-xl bg-[#3B82F6]/10 border border-[#3B82F6]/20">
+                <p className="text-[10px] text-[#A8A29E]">Sabbath</p>
+                <p className="text-lg font-semibold text-[#3B82F6]"><span className="wb-num">{ledgerData.pillar_3_streak || 0}</span></p>
+              </div>
+            </div>
+            <p className="text-xs text-center text-[#A8A29E]">
+              <span className="wb-num">{ledgerData.perfect_90_day_count || 0}</span> raises earned • Next at <span className="wb-num">90</span> perfect days
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Penalty Modal */}
+      {/* ============ PENALTY MODAL ============ */}
       {showPenalty && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6">
-          <div className="glass rounded-3xl p-8 w-full max-w-sm border-red-500/50 border-2" data-testid="penalty-modal">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-6">
+          <div className="rounded-3xl bg-[#0d0d0d] border-2 border-red-500/50 p-8 w-full max-w-sm" data-testid="penalty-modal">
             <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-serif text-center text-red-500 mb-2">
-              Repentance Penalty
-            </h2>
-            <p className="text-center text-[#A8A29E]"> 1 hour deducted from your ledger.
+            <h2 className="text-2xl font-serif text-center text-red-500 mb-2">Repentance Penalty</h2>
+            <p className="text-center text-[#A8A29E]">
+              <span className="wb-num">1</span> hour deducted from your ledger.
             </p>
             <p className="text-center text-xs text-[#A8A29E] mt-4">
               The atomic time ledger has recorded this verification failure.

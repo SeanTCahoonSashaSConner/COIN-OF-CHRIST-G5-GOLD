@@ -145,12 +145,9 @@ const AdvertiserDashboard = () => {
       <header className="bg-[#121212] border-b border-white/10 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between gap-6">
-            <div className="flex items-center gap-5">
-              <SealLogo variant="header" style={{ transform: 'scale(0.65)', transformOrigin: 'left center' }} />
-              <div>
-                <h1 className="text-2xl font-serif text-[#D4AF37]">Merchant Transparency Ledger</h1>
-                <p className="text-sm text-[#A8A29E]"> $25,000/month commitment • Real-time donation tracking</p>
-              </div>
+            <div>
+              <h1 className="text-2xl font-serif text-[#D4AF37]">Merchant Transparency Ledger</h1>
+              <p className="text-sm text-[#A8A29E]"> $25,000/month commitment • Real-time donation tracking</p>
             </div>
             <div className="flex items-center gap-4">
               <div className="glass px-4 py-2 rounded-xl flex items-center gap-2">
@@ -203,6 +200,11 @@ const AdvertiserDashboard = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
+
+        {/* CENTERED SEAL OF AUTHORITY — large, in open space */}
+        <div className="flex justify-center py-6">
+          <SealLogo variant="hero" withCaption={true} />
+        </div>
 
         <AdvertiserDeclaration />
 

@@ -23,20 +23,18 @@ const WitnessJury = () => {
         <RailroadFence label="Witness Jury" ties={28} />
       </div>
       {/* Header */}
-      <header className="bg-gradient-to-b from-[#1a1a1a] to-[#050505] py-12 border-b border-purple-500/30">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <SealLogo variant="header" />
-            <div className="flex-1 text-center md:text-left">
-              <h1 className="text-4xl md:text-5xl font-serif text-purple-400 mb-3">
-                The Witness Jury Protocol
-              </h1>
-              <p className="text-xl text-[#A8A29E] mb-2">Sovereign Dispute Resolution</p>
-              <p className="text-sm text-[#A8A29E]">
-                By the People • For the People • Without State Interference
-              </p>
-            </div>
+      <header className="bg-gradient-to-b from-[#1a1a1a] to-[#050505] py-14 border-b border-purple-500/30">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="flex justify-center mb-8">
+            <SealLogo variant="hero" withCaption={true} />
           </div>
+          <h1 className="text-4xl md:text-5xl font-serif text-purple-400 mb-3 mt-4">
+            The Witness Jury Protocol
+          </h1>
+          <p className="text-xl text-[#A8A29E] mb-2">Sovereign Dispute Resolution</p>
+          <p className="text-sm text-[#A8A29E]">
+            By the People • For the People • Without State Interference
+          </p>
 
           {/* Non-Interference Declaration */}
           <div className="mt-10 bg-red-500/10 border border-red-500/30 rounded-xl p-4 max-w-2xl mx-auto">

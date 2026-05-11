@@ -6,11 +6,13 @@ import AdvertiserDashboard from "./components/AdvertiserDashboard";
 import Constitution from "./components/Constitution";
 import WitnessJury from "./components/WitnessJury";
 import DebtExileNotice from "./components/DebtExileNotice";
+import SealLogo from "./components/SealLogo";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <SealLogo />
         <Routes>
           <Route path="/" element={<AudioPlayer />} />
           <Route path="/merchants" element={<AdvertiserDashboard />} />

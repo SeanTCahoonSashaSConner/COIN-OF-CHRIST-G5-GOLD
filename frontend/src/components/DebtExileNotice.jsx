@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import CountryOutline from './CountryOutline';
 import RailroadFence from './RailroadFence';
+import SealLogo from './SealLogo';
 
 const DebtExileNotice = () => {
   const [currentHourlyRate, setCurrentHourlyRate] = useState(13);
@@ -98,17 +99,19 @@ const DebtExileNotice = () => {
       </div>
       {/* Header - The Matrix */}
       <header className="bg-gradient-to-b from-red-900/50 to-[#050505] py-12 border-b border-red-500/30">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-b from-red-500 to-red-800 flex items-center justify-center animate-pulse">
-            <AlertTriangle className="w-12 h-12 text-white" />
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12">
+            <div className="flex-1 text-center md:text-right">
+              <h1 className="text-4xl md:text-5xl font-serif text-red-500 mb-3">
+                DEBT EXILE NOTICE
+              </h1>
+              <p className="text-xl text-[#A8A29E] mb-2">Your Official Fiscal File</p>
+              <p className="text-sm text-red-400">
+                Country of Christ • G5 Citizen Registry
+              </p>
+            </div>
+            <SealLogo variant="header" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif text-red-500 mb-4">
-            DEBT EXILE NOTICE
-          </h1>
-          <p className="text-xl text-[#A8A29E] mb-2">Your Official Fiscal File</p>
-          <p className="text-sm text-red-400">
-            Country of Christ • G5 Citizen Registry
-          </p>
         </div>
       </header>
 

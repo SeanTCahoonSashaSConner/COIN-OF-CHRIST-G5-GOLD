@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Play, Pause, Clock, Flame, ChevronUp, ChevronDown, Coins, Upload, Heart, Music, AlertTriangle, Check, Award, Trophy } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import SabbathTone from './SabbathTone';
+import SealLogo from './SealLogo';
 
 const AudioPlayer = () => {
   // Day mode: 'weekday' (Mon-Fri), 'saturday' (Good Samaritan), 'sunday' (Sabbath)
@@ -499,6 +500,10 @@ const AudioPlayer = () => {
         
         {/* Header - Day Mode Indicator */}
         <div className="w-full max-w-md space-y-3">
+          {/* Country of Christ Seal */}
+          <div className="flex justify-center pt-2">
+            <SealLogo variant="header" />
+          </div>
           {/* Day Mode Badge */}
           <div className="flex justify-center">
             <div className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase ${

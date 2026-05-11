@@ -7,6 +7,7 @@ import {
 import CountryOutline from './CountryOutline';
 import RailroadFence from './RailroadFence';
 import AdvertiserDeclaration from './AdvertiserDeclaration';
+import SealLogo from './SealLogo';
 
 const Constitution = () => {
   const [expandedSection, setExpandedSection] = useState('preamble');
@@ -24,12 +25,12 @@ const Constitution = () => {
         <RailroadFence label={activeTab === 'covenant' ? 'Merchant Covenant' : 'Constitution'} ties={28} />
       </div>
       {/* Header */}
-      <header className="bg-gradient-to-b from-[#1a1a1a] to-[#050505] py-12 border-b border-[#D4AF37]/30">
+      <header className="bg-gradient-to-b from-[#1a1a1a] to-[#050505] py-16 border-b border-[#D4AF37]/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#8B6914] flex items-center justify-center">
-            <ScrollText className="w-12 h-12 text-black" />
+          <div className="flex justify-center mb-8">
+            <SealLogo variant="hero" withCaption={true} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-4 mt-4">
             The G5 Sovereign Constitution
           </h1>
           <p className="text-xl text-[#A8A29E] mb-2">Country of Christ</p>

@@ -1,55 +1,104 @@
 import React from 'react';
 
 /**
- * Official Country of Christ Seal — TIV-TEK Human Edification.
- * Pinned to the top-right corner of every route page.
- * Used across: Country of Christ, Crypto Christian Network,
- * The Closet, and G5 GOLD.
+ * Country of Christ Seal — TIV-TEK Human Edification.
+ *
+ * Variants:
+ *   - "hero"       : large centered seal (Constitution, landing splashes)
+ *   - "header"     : medium-large inline seal (Witness Jury, Debt Exile headers)
+ *   - "watermark"  : strategically offset semi-transparent crest (dashboards)
+ *
+ * Designed to read as untouchable authority — bold gold ring, deep glow,
+ * never overlapping other UI.
  */
-const SealLogo = ({ size = 72 }) => {
+
+const VARIANTS = {
+  hero: {
+    size: 280,
+    ring: 4,
+    glow: '0 0 60px rgba(212,175,55,0.7), 0 0 120px rgba(212,175,55,0.35), inset 0 0 20px rgba(0,0,0,0.5)',
+  },
+  header: {
+    size: 140,
+    ring: 3,
+    glow: '0 0 36px rgba(212,175,55,0.6), 0 0 72px rgba(212,175,55,0.25), inset 0 0 14px rgba(0,0,0,0.5)',
+  },
+  watermark: {
+    size: 180,
+    ring: 3,
+    glow: '0 0 40px rgba(212,175,55,0.55), 0 0 80px rgba(212,175,55,0.25), inset 0 0 14px rgba(0,0,0,0.5)',
+  },
+};
+
+const SealLogo = ({ variant = 'header', className = '', style: extraStyle = {}, withCaption = false }) => {
+  const v = VARIANTS[variant] || VARIANTS.header;
+
   return (
-    <a
-      href="/"
-      data-testid="country-of-christ-seal"
-      title="Country of Christ • TIV-TEK Human Edification"
+    <div
+      data-testid={`country-of-christ-seal-${variant}`}
+      className={className}
       style={{
-        position: 'fixed',
-        top: 12,
-        right: 12,
-        zIndex: 100,
-        width: size,
-        height: size,
-        borderRadius: '50%',
-        overflow: 'hidden',
-        border: '2px solid #D4AF37',
-        boxShadow:
-          '0 0 18px rgba(212,175,55,0.55), 0 0 38px rgba(212,175,55,0.25), inset 0 0 8px rgba(0,0,0,0.4)',
-        background: '#050505',
-        display: 'block',
-        transition: 'transform 200ms ease, box-shadow 200ms ease',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'scale(1.06)';
-        e.currentTarget.style.boxShadow =
-          '0 0 28px rgba(212,175,55,0.85), 0 0 52px rgba(212,175,55,0.4), inset 0 0 8px rgba(0,0,0,0.4)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'scale(1)';
-        e.currentTarget.style.boxShadow =
-          '0 0 18px rgba(212,175,55,0.55), 0 0 38px rgba(212,175,55,0.25), inset 0 0 8px rgba(0,0,0,0.4)';
+        display: 'inline-flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 10,
+        ...extraStyle,
       }}
     >
-      <img
-        src="/assets/seal.jpg"
-        alt="Country of Christ official seal"
+      <div
+        title="Country of Christ • TIV-TEK Human Edification"
         style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
+          width: v.size,
+          height: v.size,
+          borderRadius: '50%',
+          overflow: 'hidden',
+          border: `${v.ring}px solid #D4AF37`,
+          boxShadow: v.glow,
+          background: '#050505',
+          position: 'relative',
         }}
-      />
-    </a>
+      >
+        <img
+          src="/assets/seal.jpg"
+          alt="Country of Christ official seal — TIV-TEK Human Edification"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+          loading="eager"
+        />
+      </div>
+      {withCaption && (
+        <div style={{ textAlign: 'center' }}>
+          <p
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontWeight: 800,
+              letterSpacing: '0.22em',
+              fontSize: variant === 'hero' ? 18 : 13,
+              color: '#D4AF37',
+              textShadow: '0 0 12px rgba(212,175,55,0.45)',
+              margin: 0,
+            }}
+          >
+            TIV-TEK · HUMAN EDIFICATION
+          </p>
+          <p
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: variant === 'hero' ? 12 : 10,
+              letterSpacing: '0.3em',
+              color: '#3B82F6',
+              marginTop: 4,
+            }}
+          >
+            COUNTRY OF CHRIST
+          </p>
+        </div>
+      )}
+    </div>
   );
 };
 

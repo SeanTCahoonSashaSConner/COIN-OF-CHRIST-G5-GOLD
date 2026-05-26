@@ -6,6 +6,8 @@ import AdvertiserDashboard from "./components/AdvertiserDashboard";
 import Constitution from "./components/Constitution";
 import WitnessJury from "./components/WitnessJury";
 import DebtExileNotice from "./components/DebtExileNotice";
+import Closet from "./components/Closet";
+import WalletCard from "./components/WalletCard";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="/constitution" element={<Constitution />} />
           <Route path="/witness-jury" element={<WitnessJury />} />
           <Route path="/debt-exile" element={<DebtExileNotice />} />
+          <Route path="/closet" element={<Closet />} />
+          <Route path="/wallet/sasha" element={<WalletCard slug="sasha" />} />
         </Routes>
       </BrowserRouter>
     </div>

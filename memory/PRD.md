@@ -152,18 +152,59 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - Anon Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ## Routes
-- `/` - Audio Player (citizen app)
-- `/merchants` - Merchant Transparency Ledger (advertiser dashboard)
-- `/constitution` - G5 Sovereign Constitution & Merchant Covenant
-- `/witness-jury` - Witness Jury Protocol
-- `/debt-exile` - Debt Exile Notice / Fiscal Journey
+- `/` — TIVTEK Trinity home
+- `/merchants` — Merchant Transparency Ledger
+- `/constitution` — Sovereign Constitution + Merchant Covenant
+- `/witness-jury` — Witness Jury Protocol
+- `/debt-exile` — Debt Exile Notice
+- `/closet` — The Crypto Christian Closet
+- `/wallet/sasha` — Sasha Conner's Pass2U Wallet Card
+
+## DB Tables (live in Supabase)
+- `citizen_profiles` (existing) — citizen identity
+- `loyalty_ledger` (existing) — TIV-TEK tracking
+- `advertisers` (existing) — merchant accounts
+- `merchant_donations` (existing) — donation history
+- `war_room_events` (existing)
+- **`member_ledger`** — G5 GOLD wallet (`disciple_id`, `g5_gold_balance`, `tier`, `is_tivtek_exempt`, `hourly_drop_amount`, `cycle_payout_amount`)
+- **`closet_catalog`** — merchant-donated inventory
+- **`closet_orders`** — Closet-only redemption (DB-locked venue)
+- **`g5_wallet_cards`** — Pass2U card mapping per citizen
+
+## Live Citizens
+- **Sasha Conner** (`g5-sash-15`) — Co-Founder — $21,987 G5 GOLD — TIV-TEK exempt — Pass2U card live in Google Wallet
+- **Sean Tivis Cahoon** (`00000000-0000-0000-0000-000000000001`) — Founder — $21,987 G5 GOLD — TIV-TEK exempt — Pass2U URL pending
+
+## Pass2U Integration
+- Account: `countryofchrist@gmail.com`
+- API Key: `d6087c2cf93275ae0cfaffe5b44c0358` (valid until 2026-06-25)
+- Model: `382655` (SOLFEGE card)
+- Sasha's passId: `DdwbQl8JhDaE`
+- Update endpoint: `PUT https://api.pass2u.net/v2/models/{modelId}/passes/{passId}`
+- Field key: `balance` (Dynamic, set in model designer)
 
 ## Next Tasks (priority order)
-1. **C2C / Crypto Christian Network mailing system** — BLOCKED: user's SQL didn't actually run in Supabase. User needs to re-run, then we wire frontend (verified cove directory view, covenant hub flag/capacity, c2c_routing_code, covenators/covenettes rosters)
-2. **Crypto Christian Closet** physical/digital marketplace + closet account balance (incl. $429.00 G5 GOLD initial drop)
-3. Integrate actual KJV Bible audio source (currently a timer placeholder)
-4. Solana wallet integration for blockchain tracking (currently UI-only)
-5. Advertiser registration portal with Covenant signing ceremony (digital signature with .sol wallet)
+1. Final Pass2U Save with "Apply updates to all passes" → push $21,987 live to Sasha's card
+2. Marqeta JIT production integration (needs API keys from user)
+3. Sean's `/wallet/sean` route (needs his Pass2U URL)
+4. $10/33hr citizen deduction rule (SQL trigger + cron)
+5. Citizen sign-up form
+6. Real Closet inventory (advertiser onboarding)
+7. C2C / Crypto Christian Network mailing system
+
+## Deployment
+- ✅ Production build verified (`yarn build` clean)
+- ✅ `vercel.json` at repo root (React Router rewrites)
+- ✅ GitHub repo pushed via "Save to GitHub"
+- 🟡 Vercel import pending (manual user step)
+
+## Design System (Feb 2026)
+- G5 GOLD text → solid metallic gold gradient via `.g5-gold` CSS class
+- Numerals/$/Article Roman numerals → witness-blue (#3B82F6) via `.wb-num`
+- Country of Christ seal on every page (uncropped, large, centered)
+- Folded-map background + neon country outlines + golden railroad fences
+- Advertiser Clean-Content Declaration on Merchant pages
+- Silent platform — no badges/levels/public posts
 
 ## Design System (Feb 2026)
 - **G5 GOLD** text → solid metallic gold gradient via `.g5-gold` CSS class

@@ -498,23 +498,40 @@ const AudioPlayer = () => {
       <div className="max-w-2xl mx-auto px-4 py-6 space-y-5">
 
         {/* ============ TITLE ============ */}
-        <div className="flex items-center justify-center gap-4 pt-2">
-          <Triangle className="w-7 h-7 text-[#D4AF37]" />
-          <h1
-            className="font-bold tracking-[0.18em] text-3xl md:text-4xl"
+        <div className="flex flex-col items-center gap-1 pt-2">
+          <div className="flex items-center justify-center gap-4">
+            <Triangle className="w-7 h-7 text-[#D4AF37]" />
+            <h1
+              className="font-bold tracking-[0.18em] text-3xl md:text-4xl text-center"
+              style={{
+                fontFamily: "'Cinzel', serif",
+                background: 'linear-gradient(180deg,#FFE066 0%,#F5C842 40%,#D4AF37 70%,#8B6914 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 0 12px rgba(212,175,55,0.4))',
+              }}
+              data-testid="coin-of-christ-title"
+            >
+              THE COIN of CHRIST
+            </h1>
+            <Triangle className="w-7 h-7 text-[#D4AF37]" style={{ transform: 'rotate(180deg)' }} />
+          </div>
+          <p
+            className="text-2xl md:text-3xl tracking-[0.3em] mt-1"
             style={{
               fontFamily: "'Cinzel', serif",
-              background: 'linear-gradient(180deg,#FFE066 0%,#F5C842 40%,#D4AF37 70%,#8B6914 100%)',
+              fontWeight: 800,
+              background: 'linear-gradient(180deg,#FFF1A8 0%,#FFE066 30%,#F5C842 60%,#D4AF37 90%)',
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               filter: 'drop-shadow(0 0 12px rgba(212,175,55,0.4))',
             }}
-            data-testid="tivtek-trinity-title"
+            data-testid="g5-gold-subtitle"
           >
-            TIVTEK TRINITY
-          </h1>
-          <Triangle className="w-7 h-7 text-[#D4AF37]" style={{ transform: 'rotate(180deg)' }} />
+            G5 GOLD
+          </p>
         </div>
         <p className="text-center text-xs tracking-[0.35em] text-[#A8A29E] uppercase">
           Verified Human Presence Protocol

@@ -111,7 +111,7 @@ const Constitution = () => {
                   </p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li><strong className="text-white">The Crypto Christian Network</strong> — Our unified digital community</li>
-                    <li><strong className="text-white">Crypto Walking With Christ</strong> — The audible scripture platform</li>
+                    <li><strong className="text-white">THE COIN of CHRIST · <span className="g5-gold">G5 GOLD</span></strong> — The audible scripture platform</li>
                     <li><strong className="text-white">The Crypto Christian Closet</strong> — Our phygital commerce system</li>
                     <li><strong className="text-white"><span className="g5-gold">G5 GOLD</span></strong> — Our sovereign closed-loop reward currency</li>
                   </ul>

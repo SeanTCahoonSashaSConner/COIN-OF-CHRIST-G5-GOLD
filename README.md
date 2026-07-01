@@ -1,6 +1,6 @@
-# Country of Christ — Crypto Walking with Christ
+# Country of Christ — The Coin of Christ · G5 GOLD
 
-The sovereign digital nation. TIV-TEK Human Edification, G5 GOLD loyalty currency, walled-garden redemption via The Crypto Christian Closet.
+The sovereign digital nation. TIV-TEK Human Edification, G5 GOLD loyalty currency, walled-garden redemption via The Crown of Christ.
 
 ## Tech Stack
 - React (Create React App) + Tailwind + shadcn/ui
@@ -28,5 +28,5 @@ The sovereign digital nation. TIV-TEK Human Edification, G5 GOLD loyalty currenc
 - `/constitution` — Sovereign Constitution + Merchant Covenant
 - `/witness-jury` — Witness Jury Protocol
 - `/debt-exile` — Debt Exile Notice
-- `/closet` — The Crypto Christian Closet
+- `/closet` — The Crown of Christ · Fit for a King
 - `/wallet/sasha` — Sasha Conner's G5 Wallet Card (Pass2U)

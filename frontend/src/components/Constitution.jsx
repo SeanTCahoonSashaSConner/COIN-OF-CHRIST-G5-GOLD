@@ -110,9 +110,9 @@ const Constitution = () => {
                     the Country of Christ ecosystem, including but not limited to:
                   </p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong className="text-white">The Crypto Christian Network</strong> — Our unified digital community</li>
+                    <li><strong className="text-white">The Christian Currency Network</strong> — Our unified digital community</li>
                     <li><strong className="text-white">THE COIN of CHRIST · <span className="g5-gold">G5 GOLD</span></strong> — The audible scripture platform</li>
-                    <li><strong className="text-white">The Crypto Christian Closet</strong> — Our phygital commerce system</li>
+                    <li><strong className="text-white">The Crown of Christ</strong> — Our phygital commerce system</li>
                     <li><strong className="text-white"><span className="g5-gold">G5 GOLD</span></strong> — Our sovereign closed-loop reward currency</li>
                   </ul>
                 </div>
@@ -242,7 +242,7 @@ const Constitution = () => {
                   <p>
                     <span className="g5-gold">G5 GOLD</span> must be spent before the next payout can be received. This ensures continuous 
                     circulation within the economy and prevents hoarding. Citizens have access to the 
-                    <strong className="text-white"> Crypto Christian Closet</strong> filled with merchandise 
+                    <strong className="text-white"> Crown of Christ</strong> filled with merchandise 
                     donated by covenant-bound merchants.
                   </p>
 
@@ -408,7 +408,7 @@ const Constitution = () => {
               )}
             </section>
 
-            {/* Article V - The Crypto Christian Closet */}
+            {/* Article V - The Crown of Christ */}
             <section className="glass rounded-2xl overflow-hidden">
               <button
                 onClick={() => toggleSection('article5')}
@@ -419,7 +419,7 @@ const Constitution = () => {
                     <Heart className="w-6 h-6 text-pink-400" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-serif">Article <span className="wb-num">V</span> — The Crypto Christian Closet</h2>
+                    <h2 className="text-xl font-serif">Article <span className="wb-num">V</span> — The Crown of Christ</h2>
                     <p className="text-sm text-[#A8A29E]">The Phygital Commerce System</p>
                   </div>
                 </div>
@@ -429,7 +429,7 @@ const Constitution = () => {
                 <div className="px-6 pb-6 text-[#A8A29E] leading-relaxed space-y-4">
                   <h3 className="text-lg font-semibold text-white">Section <span className="wb-num">1</span>: Definition</h3>
                   <p>
-                    The Crypto Christian Closet is the official marketplace where citizens spend their <span className="g5-gold">G5 GOLD</span>. 
+                    The Crown of Christ is the official marketplace where citizens spend their <span className="g5-gold">G5 GOLD</span>. 
                     It operates as a <strong className="text-white">phygital twin</strong>—a digital inventory 
                     connected to physical fulfillment.
                   </p>
@@ -560,7 +560,7 @@ const Constitution = () => {
                     </div>
                     <p className="text-sm">
                       Commit to a minimum <strong className="text-[#D4AF37]"> $25,000 USD</strong> monthly 
-                      recurring merchandise donation to the Crypto Christian Closet.
+                      recurring merchandise donation to the Crown of Christ.
                     </p>
                   </div>
                   <div className="bg-white/5 rounded-xl p-4">

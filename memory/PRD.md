@@ -151,14 +151,15 @@ Build the "Crypto Walking with Christ" app - an audible scripture app where user
 - URL: https://cwsgebsxbhvfnyzyjasy.supabase.co
 - Anon Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
-## Routes
-- `/` — TIVTEK Trinity home
-- `/merchants` — Merchant Transparency Ledger
-- `/constitution` — Sovereign Constitution + Merchant Covenant
-- `/witness-jury` — Witness Jury Protocol
-- `/debt-exile` — Debt Exile Notice
-- `/closet` — The Crypto Christian Closet
-- `/wallet/sasha` — Sasha Conner's Pass2U Wallet Card
+## Country of Christ App — LAUNCH READY (Feb 2026)
+
+Sovereign digital nation. Learn-to-earn ecosystem powered by TIV-TEK Human Edification verification, G5 GOLD offline loyalty tokens, and a walled-garden redemption venue.
+
+### Brand
+- **THE COIN of CHRIST · G5 GOLD** — the learn-to-earn app (formerly "Crypto Walking with Christ")
+- **THE CROWN OF CHRIST · Fit for a King** — the walled-garden redemption venue (formerly "Crypto Christian Closet")
+- **Christian Currency Network** — the citizen-to-citizen mailing/verification network (formerly "Crypto Christian Network")
+- Word "crypto" removed everywhere — cleaner brand positioning
 
 ## DB Tables (live in Supabase)
 - `citizen_profiles` (existing) — citizen identity

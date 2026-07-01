@@ -5,7 +5,7 @@ import SealLogo from './SealLogo';
 import RailroadFence from './RailroadFence';
 
 /**
- * The Crypto Christian Closet — the SOLE venue where G5 GOLD is redeemed.
+ * The Crown of Christ — the SOLE venue where G5 GOLD is redeemed.
  * Wired to: member_ledger, closet_catalog, closet_orders (Supabase).
  *
  * Citizens see their G5 GOLD balance, browse merchant-donated inventory,
@@ -85,7 +85,7 @@ const Closet = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-[#FAFAF9]" data-testid="closet-page">
       <div className="pt-4 px-4">
-        <RailroadFence label="The Crypto Christian Closet" ties={28} />
+        <RailroadFence label="THE CROWN OF CHRIST · Fit for a King" ties={28} />
       </div>
 
       {/* ============ HEADER ============ */}
@@ -94,9 +94,24 @@ const Closet = () => {
           <div className="flex justify-center mb-6">
             <SealLogo variant="hero" withCaption={true} />
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-3 mt-6">
-            The Crypto Christian Closet
+          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-2 mt-6">
+            THE CROWN OF CHRIST
           </h1>
+          <p
+            className="text-sm md:text-base tracking-[0.4em] uppercase mb-4"
+            style={{
+              fontFamily: "'Cinzel', serif",
+              fontWeight: 700,
+              background: 'linear-gradient(180deg,#FFF1A8 0%,#FFE066 30%,#F5C842 60%,#D4AF37 90%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(0 0 8px rgba(212,175,55,0.4))',
+            }}
+            data-testid="fit-for-a-king-slogan"
+          >
+            Fit for a King
+          </p>
           <p className="text-[#A8A29E] max-w-2xl mx-auto">
             The <strong className="text-white">sole venue</strong> for redeeming{' '}
             <span className="g5-gold">G5 GOLD</span>. Walled garden by design — citizens
@@ -247,7 +262,7 @@ const Closet = () => {
       {/* ============ FOOTER ============ */}
       <footer className="border-t border-white/5 py-6">
         <div className="max-w-5xl mx-auto px-6 text-center text-xs text-[#A8A29E]">
-          <p>The Crypto Christian Closet · countryofchrist.sol · Walled-garden redemption</p>
+          <p>The Crown of Christ · countryofchrist.sol · Walled-garden redemption</p>
         </div>
       </footer>
       <div className="px-4 pb-4">

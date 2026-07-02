@@ -3,6 +3,7 @@ import { ShoppingBag, Coins, Package, ShieldCheck, AlertCircle, Sparkles } from 
 import { supabase } from '../lib/supabase';
 import SealLogo from './SealLogo';
 import RailroadFence from './RailroadFence';
+import MOCK_REWARDS from './mockRewards';
 
 /**
  * The Crown of Christ — the SOLE venue where G5 GOLD is redeemed.
@@ -42,9 +43,15 @@ const Closet = () => {
         .gt('inventory_count', 0)
         .order('price_g5_gold', { ascending: true });
 
-      if (items) setCatalog(items);
+      if (items && items.length > 0) {
+        setCatalog(items);
+      } else {
+        // Fallback: mock rewards catalog for frontend-only redemption sim
+        setCatalog(MOCK_REWARDS);
+      }
     } catch (err) {
       console.error('Closet fetch error:', err);
+      setCatalog(MOCK_REWARDS);
     } finally {
       setLoading(false);
     }
@@ -53,16 +60,35 @@ const Closet = () => {
   useEffect(() => { fetchData(); }, [fetchData]);
 
   const handleRedeem = async (item) => {
-    if (!discipleId) {
-      setMessage({ type: 'error', text: 'No citizen profile found. Please link your account first.' });
-      return;
-    }
     if (balance < parseFloat(item.price_g5_gold)) {
       setMessage({ type: 'error', text: 'Insufficient G5 GOLD balance.' });
+      setTimeout(() => setMessage(null), 4000);
       return;
     }
 
     setRedeeming(item.id);
+
+    // Frontend-only simulation for mock rewards (from mockRewards.js)
+    if (item.mock) {
+      setTimeout(() => {
+        setBalance((prev) => +(prev - parseFloat(item.price_g5_gold)).toFixed(2));
+        setMessage({
+          type: 'success',
+          text: `Redeemed: ${item.product_name} — $${parseFloat(item.price_g5_gold).toFixed(2)} G5 GOLD deducted`,
+        });
+        setRedeeming(null);
+        setTimeout(() => setMessage(null), 4000);
+      }, 400);
+      return;
+    }
+
+    // Real catalog path — hits Supabase closet_orders (DB trigger auto-debits ledger)
+    if (!discipleId) {
+      setMessage({ type: 'error', text: 'No citizen profile found. Please link your account first.' });
+      setRedeeming(null);
+      setTimeout(() => setMessage(null), 4000);
+      return;
+    }
     try {
       const { error } = await supabase.from('closet_orders').insert({
         disciple_id: discipleId,
@@ -229,6 +255,11 @@ const Closet = () => {
                     {item.advertisers?.business_name && (
                       <p className="text-xs text-[#3B82F6] mt-0.5">
                         Donated by {item.advertisers.business_name}
+                      </p>
+                    )}
+                    {item.provider && (
+                      <p className="text-xs text-[#3B82F6] mt-0.5">
+                        via {item.provider}
                       </p>
                     )}
                     <div className="flex items-center justify-between mt-3">

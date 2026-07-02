@@ -1,20 +1,18 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "buildCommand": "cd frontend && yarn install && yarn build",
+  "outputDirectory": "frontend/build",
+  "installCommand": "cd frontend && yarn install",
+  "framework": null,
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.9",
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
-  "experimentalServices": {
-    "frontend": {
-      "root": "frontend",
-      "routePrefix": "/",
-      "framework": "create-react-app"
-    },
-    "backend": {
-      "root": "backend",
-      "entrypoint": "server:app",
-      "routePrefix": "/_/backend"
-    }
-  }
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/(.*)",     "destination": "/index.html" }
+  ]
 }

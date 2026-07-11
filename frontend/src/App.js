@@ -1,6 +1,6 @@
 import React from "react";
 import "@/App.css";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AudioPlayer from "./components/AudioPlayer";
 import AdvertiserDashboard from "./components/AdvertiserDashboard";
 import Constitution from "./components/Constitution";
@@ -11,7 +11,7 @@ import Closet from "./components/Closet";
 function App() {
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<AudioPlayer />} />
           <Route path="/merchants" element={<AdvertiserDashboard />} />
@@ -20,7 +20,7 @@ function App() {
           <Route path="/debt-exile" element={<DebtExileNotice />} />
           <Route path="/closet" element={<Closet />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </div>
   );
 }

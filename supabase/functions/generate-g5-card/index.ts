@@ -1,8 +1,8 @@
 // supabase/functions/generate-g5-card/index.ts
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { serve } from "https://deno.land"
 
 const PASS2U_API_KEY = Deno.env.get('PASS2U_API_KEY')
-const PASS2U_TEMPLATE_ID = "YOUR_COUNTRY_OF_CHRIST_TEMPLATE_ID"
+const PASS2U_TEMPLATE_ID = Deno.env.get('PASS2U_TEMPLATE_ID')
 
 serve(async (req) => {
   const { disciple_id, current_balance, status } = await req.json()
@@ -18,7 +18,7 @@ serve(async (req) => {
     ]
   }
 
-  const response = await fetch("https://api.pass2u.net/v2/passes", {
+  const response = await fetch("https://pass2u.net", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${PASS2U_API_KEY}`,

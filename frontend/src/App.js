@@ -10,7 +10,7 @@ import Closet from "./components/Closet";
 
 function App() {
   return (
-    <div className="App"
+    <div className="App">
         <Routes>
           <Route path="/" element={<AudioPlayer />} />
           <Route path="/merchants" element={<AdvertiserDashboard />} />

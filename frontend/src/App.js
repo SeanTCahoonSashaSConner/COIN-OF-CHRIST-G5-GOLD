@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import AudioPlayer from "./components/AudioPlayer";
-import AdvertiserDashboard from "./components/AdvertiserDashboard";
-import Constitution from "./components/Constitution";
-import WitnessJury from "./components/WitnessJury";
-import DebtExileNotice from "./components/DebtExileNotice";
-import closet from "./components/closet";
+import AudioPlayer from "./components/audioplayer";
+import AdvertiserDashboard from "./components/advertiserdashboard";
+import Constitution from "./components/constitution";
+import WitnessJury from "./components/witnessjury";
+import DebtExileNotice from "./components/debtexilenotice";
+import Closet from "./components/closet";
+
 
 function App() {
   return (

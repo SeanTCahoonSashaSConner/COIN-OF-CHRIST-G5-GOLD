@@ -1,42 +1,47 @@
-name: Deploy Frontend
+name: Deploy Frontend to GitHub Pages
+
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
-    runs-on:
-      ubuntu-latest
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
       - name: Checkout
-        uses:
-          actions/checkout@v4
-      - name: Node Setup
-        uses:
-          actions/setup-node@v4
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          node-version:
-            20
-          cache:
-            npm
-      - name: Install
-        working-directory: frontend
-        run: |
-          npm install --legacy-peer-deps
-          npm install ajv ajv-keywords --legacy-peer-deps
-      - name: Build
-        working-directory: frontend
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build App
+        run: yarn build
         env:
-          CI: false
-        run:
-          npm run build
-      - name: Deploy
-        uses:
-          JamesIves/github-pages-deploy-action@v4
+          REACT_APP_SUPABASE_URL: ${{ secrets.REACT_APP_SUPABASE_URL }}
+          REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder:
-            frontend/build
-          branch:
-            gh-pages
+          path: './frontend/build'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -3,7 +3,7 @@ import { ShoppingBag, Coins, Package, ShieldCheck, AlertCircle, Sparkles } from 
 import { supabase } from '../lib/supabase';
 import SealLogo from './SealLogo';
 import RailroadFence from './RailroadFence';
-import Mock_Rewards from './Mock_Rewards';
+import Mock_Rewards from './mockRewards.js';
 
 
 

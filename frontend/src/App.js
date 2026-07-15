@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import AudioPlayer from "./components/Audioplayer";
-import AdvertiserDashboard from "./components/advertiserdashboard";
-import Constitution from "./components/constitution";
-import WitnessJury from "./components/witnessjury";
-import DebtExileNotice from "./components/debtexilenotice";
+import AudioPlayer from './components/AudioPlayer';
+import AdvertiserDashboard from "./components/AdvertiserDashboard";
+import Constitution from "./components/Constitution";
+import WitnessJury from "./components/WitnessJury";
+import DebtExileNotice from "./components/DebtExileNotice";
 import Closet from "./components/closet";
 
 

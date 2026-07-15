@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import AudioPlayer from "./components/audioplayer";
+import AudioPlayer from "./components/Audioplayer";
 import AdvertiserDashboard from "./components/advertiserdashboard";
 import Constitution from "./components/constitution";
 import WitnessJury from "./components/witnessjury";

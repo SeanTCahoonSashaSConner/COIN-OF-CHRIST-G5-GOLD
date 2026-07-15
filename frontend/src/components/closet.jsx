@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ShoppingBag, Coins, Package, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import SeaLogo from './sealogo';
+import SeaLogo from './sealogo.png';
 import RailroadFence from './railroadfence';
 import MOCK_REWARDS from './mockrewards';
 

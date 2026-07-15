@@ -21,10 +21,13 @@ jobs:
             20
           cache:
             npm
+      
       - name: Install
+        working-directory: frontend
         run:
           npm install
       - name: Build
+        working-directory: frontend
         run:
           npm run build
       - name: Deploy
@@ -32,6 +35,6 @@ jobs:
           JamesIves/github-pages-deploy-action@v4
         with:
           folder:
-            build
+            frontend/build
           branch:
             gh-pages

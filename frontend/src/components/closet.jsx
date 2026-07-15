@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ShoppingBag, Coins, Package, ShieldCheck, AlertCircle, Sparkles } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import SeaLogo from './SeaLogo';
-import RailroadFence from './RailroadFence';
-import MOCK_REWARDS from './mockRewards';
+import SeaLogo from './sealogo';
+import RailroadFence from './railroadfence';
+import MOCK_REWARDS from './mockrewards';
+
+
 
 /**
  * The Crown of Christ - the SOLE venue where G5 GOLD is redeemed.

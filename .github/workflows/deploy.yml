@@ -21,11 +21,10 @@ jobs:
             20
           cache:
             npm
-      
       - name: Install
         working-directory: frontend
         run:
-          npm install
+          npm install --legacy-peer-deps
       - name: Build
         working-directory: frontend
         run:

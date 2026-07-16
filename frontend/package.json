@@ -1,10 +1,7 @@
 {
   "name": "frontend",
-  "homepage: "https://SeanTCahoonSashaSConner.github.io/COIN-OF-CHRIST-G5-GOLD,  "version": "0.1.0",
+   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=22"
-  },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@radix-ui/react-accordion": "^1.2.8",

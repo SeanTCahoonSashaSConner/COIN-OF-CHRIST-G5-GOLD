@@ -3,7 +3,7 @@
   "name": "coin-of-christ-g5-gold",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://github.io",
+"homepage": "https://SeanTCahoonSashaSConner.github.io/COIN-OF-CHRIST-G5-GOLD",
   "dependencies": {
     "@supabase/supabase-js": "^2.43.0",
     "react": "^18.3.1",

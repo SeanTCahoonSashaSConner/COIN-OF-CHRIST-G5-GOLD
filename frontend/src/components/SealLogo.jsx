@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 /**
@@ -17,7 +16,7 @@ const SealLogo = ({ variant = 'header', className = '', style: extraStyle = {} }
 
   return (
     <div 
-      className={`flex flex-col items-center justify-center ${className}`}
+      className={`flex items-center justify-center ${className}`}
       style={{
         width: width,
         maxWidth: '92vw',
@@ -58,10 +57,6 @@ const SealLogo = ({ variant = 'header', className = '', style: extraStyle = {} }
         <circle cx="100" cy="100" r="22" fill="#050505" stroke="url(#g5GoldGrad)" strokeWidth="2" />
         <polygon points="100,85 111,108 135,100 116,116 125,140 100,125 75,140 84,116 65,100 89,108" fill="url(#g5GoldGrad)" />
       </svg>
-      
-      <p className="text-[#D4AF37] text-xs font-semibold tracking-[0.2em] mt-3 uppercase font-serif text-center">
-        Country Of Christ Official Seal
-      </p>
     </div>
   );
 };

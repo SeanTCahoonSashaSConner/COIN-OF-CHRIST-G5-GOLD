@@ -1,4 +1,4 @@
-name: Deploy Frontend to GitHub Pages
+name: Deploy React Frontend to GitHub Pages
 
 on:
   push:
@@ -9,36 +9,35 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          
-          cache: 'yarn'
+          node-version: 18
 
-      - name: Install dependencies
-        run: yarn install
+      - name: Install dependencies & Build
+        run: |
+          cd frontend
+          npm install
+          npm run build
 
-      - name: Build App
-        run: yarn build
-        env:
-          REACT_APP_SUPABASE_URL: ${{ secrets.REACT_APP_SUPABASE_URL }}
-          REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './frontend/build'

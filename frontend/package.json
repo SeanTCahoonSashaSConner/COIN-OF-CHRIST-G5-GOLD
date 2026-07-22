@@ -10,8 +10,9 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
-    "tailwindcss-animate": "^1.0.7"
-  },
+  "tailwindcss-animate": "^1.0.7",
+"rc-slider": "^10.6.0"
+,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

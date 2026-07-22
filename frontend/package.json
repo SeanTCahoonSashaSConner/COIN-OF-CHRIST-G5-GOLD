@@ -12,8 +12,7 @@
     "react-scripts": "5.0.1",
   "tailwindcss-animate": "^1.0.7",
 "rc-slider": "^10.6.0",
-
-  "scripts": {
+"scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
